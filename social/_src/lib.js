@@ -85,7 +85,7 @@ function flow(steps, opt = {}) {
 
 // 左右对比
 // 已是 HTML 的片段里只替换 ==高亮== 和 **粗体**
-const md = (s) => s.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/==([^=]+)==/g, '<mark>$1</mark>');
+const md = (s) => s.replace(/`([^`<]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/==([^=]+)==/g, '<mark>$1</mark>');
 const vs = (l, r) => `<div class="vs">
   <div class="vcol bad"><div class="vhead">${l.icon || '😵'} ${rich(l.title)}</div><div class="vbody">${md(l.body)}</div></div>
   <div class="vmid">VS</div>
@@ -131,7 +131,7 @@ const cover = (o) => ({
 
 // 普通内容卡
 // 手写 HTML 片段里的 ==高亮== 也一并处理
-const card = (...parts) => ({ kind: 'body', html: md(parts.join('')) });
+const card = (...parts) => ({ kind: 'body', html: parts.map((x) => (x.startsWith('<div class="code') ? x : md(x))).join('') });
 
 // 结尾卡
 const outro = (o) => ({
@@ -139,7 +139,7 @@ const outro = (o) => ({
   html: `<div class="out">
     ${h(o.title || '一张卡复习', o.sub)}
     ${o.body}
-    <div class="next"><div class="nlab">下一篇</div><div class="ntit">${rich(o.next)}</div></div>
+    <div class="next"><div class="nlab">${o.nextLabel || '下一篇'}</div><div class="ntit">${rich(o.next)}</div></div>
     <div class="cta">👍 点赞收藏不迷路 · 有问题评论区见</div>
   </div>`,
 });

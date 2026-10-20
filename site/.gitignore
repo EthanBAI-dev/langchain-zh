@@ -1,0 +1,5 @@
+node_modules/
+docs/learn/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+docs/.vitepress/theme/data/glossary.json

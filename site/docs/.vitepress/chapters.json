@@ -11,5 +11,8 @@
   { "slug": "ch09", "file": "09-部署上线.md", "num": "9", "title": "部署上线", "part": "LangGraph 进阶", "minutes": 30 },
   { "slug": "ch10", "file": "10-DeepAgents.md", "num": "10", "title": "Deep Agents", "part": "高级专题", "minutes": 55 },
   { "slug": "ch11", "file": "11-LangSmith.md", "num": "11", "title": "LangSmith", "part": "高级专题", "minutes": 30 },
+  { "slug": "ch12", "file": "12-DeepAgents上手.md", "num": "12", "title": "Deep Agents 上手", "part": "Deep Agents 实战", "minutes": 45 },
+  { "slug": "ch13", "file": "13-DeepAgents运行环境与上下文.md", "num": "13", "title": "运行环境与上下文", "part": "Deep Agents 实战", "minutes": 50 },
+  { "slug": "ch14", "file": "14-DeepAgents委派与综合项目.md", "num": "14", "title": "委派、综合项目与部署", "part": "Deep Agents 实战", "minutes": 60 },
   { "slug": "appendix", "file": "附录-速查表与术语表.md", "num": "附录", "title": "速查表与术语表", "part": "附录", "minutes": 10 }
 ]

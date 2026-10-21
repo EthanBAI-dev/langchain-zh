@@ -3,7 +3,7 @@
 > **本章目标**：知道 LangSmith 能做什么，学会开启追踪、读懂一条 trace，了解离线评估、在线评估和提示工程的基本流程。
 > **对应课程**：Quickstart: LangSmith Essentials、Intro to LangSmith（以及前面各章中穿插的 LangSmith 追踪链接）
 
-[← 上一章](10-DeepAgents.md) ｜ [返回导读](README.md) ｜ [附录 →](附录-速查表与术语表.md)
+[← 上一章](10-DeepAgents.md) ｜ [返回导读](README.md) ｜ [下一章 →](12-DeepAgents上手.md)
 
 ---
 
@@ -157,4 +157,4 @@ client.evaluate(target, data="sql-agent-qa", evaluators=[correct], experiment_pr
 2. 去 [LangChain Academy](https://academy.langchain.com/) 看对应课程的视频，加深理解。
 3. 有兴趣的话，参加 LangChain Certified Agent Engineer 认证考试。
 
-[附录：速查表与术语表 →](附录-速查表与术语表.md)
+[下一章：Deep Agents 上手 →](12-DeepAgents上手.md)

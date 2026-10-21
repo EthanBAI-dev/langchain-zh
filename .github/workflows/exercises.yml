@@ -3,23 +3,26 @@ name: exercises
 on:
   push:
     branches: [main]
-    paths: ["exercises/**", ".github/workflows/exercises.yml"]
+    paths: ["exercises/**", "exercises-langgraph/**", ".github/workflows/exercises.yml"]
   pull_request:
-    paths: ["exercises/**", ".github/workflows/exercises.yml"]
+    paths: ["exercises/**", "exercises-langgraph/**", ".github/workflows/exercises.yml"]
 
 jobs:
   check-solutions:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dir: [exercises, exercises-langgraph]
     defaults:
       run:
-        working-directory: exercises
+        working-directory: ${{ matrix.dir }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: exercises/requirements.txt
+          cache-dependency-path: ${{ matrix.dir }}/requirements.txt
       - run: pip install -r requirements.txt
       - name: 参考答案必须全部通过
         run: pytest --solution

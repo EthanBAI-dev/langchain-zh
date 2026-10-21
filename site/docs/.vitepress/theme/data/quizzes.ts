@@ -439,4 +439,56 @@ export const quizzes: Record<string, Question[]> = {
       explain: '工具在运行时才确定，所以让 `langgraph dev` 启动时调用工厂来建图。',
     },
   ],
+  ch15: [
+    {
+      q: '披萨店的 Bug 1 为什么模型自己发现不了？',
+      options: ['模型太弱', '库存数字只出现在 `get_ingredient` 的子 run 里，从没回到模型的上下文', '系统提示词禁止它检查库存', '菠萝根本不在菜单上'],
+      answer: 1,
+      explain: '证据在 trace 里，不在模型的上下文里。只看最终回复永远发现不了，要展开子 run。',
+    },
+    {
+      q: '想让多次请求在 LangSmith 里归成同一段对话，元数据的键名应该用？',
+      options: ['`chat_id`', '`thread_id`、`session_id` 或 `conversation_id`', '`run_id`', '`user_id`'],
+      answer: 1,
+      explain: '只认这三个键名，值通常是一个 UUID。LangGraph 应用会自动带上 `thread_id`。',
+    },
+    {
+      q: '分类任务的 F1 分数应该用哪种评估器算？',
+      options: ['普通评估器，每条样本算一次', '汇总评估器（`summary_evaluators`），一次拿到所有输出', '两两对比评估器', '在线评估器'],
+      answer: 1,
+      explain: 'F1 要先数完全部真阳性、假阳性、假阴性，只能在整个实验上算。',
+    },
+    {
+      q: '`eval.py` 为什么给每条样本新开一个 `thread_id`？',
+      options: ['为了跑得更快', '订单按 `thread_id` 存，共用会让后面的样本在前面的订单上继续加披萨', 'LangSmith 要求这样', '为了省 token'],
+      answer: 1,
+      explain: '样本之间必须互不干扰，打分才可信。',
+    },
+  ],
+  ch16: [
+    {
+      q: '在线情绪评估器为什么要把 `OPENAI_API_KEY` 存成工作区密钥？',
+      options: ['为了加密', '评估器在 LangSmith 自己的服务器上调模型，读不到你本机的 `.env`', '为了省钱', 'Prompt Hub 需要'],
+      answer: 1,
+      explain: '在 Settings → Provider secrets 里添加。就算只跑 Claude SDK 版也要放 OpenAI 的 key。',
+    },
+    {
+      q: '情绪裁判 Version 2 相比 Version 1 改了什么？',
+      options: ['换了更强的模型', '加了"结果"一块：问题没解决就给 0 分，不管语气多好', '改成每条消息打分', '去掉了评分标准'],
+      answer: 1,
+      explain: '人工复核发现两个"语气平静但没买成"的假正面。没有负面词不代表体验好。',
+    },
+    {
+      q: 'Bug 2 的破案线索是什么？',
+      options: ['模型报错了', '加了蒜香面包结后 `order_subtotal` 正好等于这份小食的价格', '订单号重复', '配送地址错了'],
+      answer: 1,
+      explain: '起送价的小计只算了小食，披萨没算进去。修复是改用 `db.order_summary(order)["subtotal"]`。',
+    },
+    {
+      q: '网页前端想让用户点赞，又不能暴露 API Key，应该用？',
+      options: ['把 API Key 写进前端', '`create_presigned_feedback_token` 生成的预签名链接', '让用户自己登录 LangSmith', '在线评估器'],
+      answer: 1,
+      explain: '预签名链接不需要密钥，还可以配合预生成的 `run_id` 在 run 产生之前就生成。',
+    },
+  ],
 }

@@ -1,7 +1,7 @@
 # 第 10 章 Deep Agents：能干"长活"的智能体
 
 > **本章目标**：理解为什么普通 Agent 干不好长任务；从零实现 Deep Agent 的三件法宝——**任务规划、文件系统、子智能体**；最后用官方 `deepagents` 库几行代码得到同样的能力。
-> **对应课程**：Deep Agents from Scratch（0_create_agent ~ 4_full_agent）、Introduction to Deep Agents
+> **对应课程**：Deep Agents from Scratch（0_create_agent ~ 4_full_agent）。新版 Introduction to Deep Agents 见第 12–14 章
 
 [← 上一章](09-部署上线.md) ｜ [返回导读](README.md) ｜ [下一章 →](11-LangSmith.md)
 
@@ -319,15 +319,16 @@ agent = create_deep_agent(
 
 ## 10.8 Academy 的 Deep Agents 课程地图
 
-根据 Academy 公开课程页的信息，**Introduction to Deep Agents** 课程按以下模块组织，可以和本章对照学习：
+本章对应的是 **Deep Agents from Scratch**（从零手写）。Academy 新版的 **Introduction to Deep Agents** 直接用官方 `deepagents` 库，本书在第 12–14 章逐课讲解：
 
-| 模块 | 内容 |
-|---|---|
-| Module 1 入门 | Deep Agents 概览、运行一个 Deep Agent、模型、系统提示词、工具、MCP、消息/线程/检查点、HITL |
-| Module 2 环境 | Agent 的运行环境、文件系统后端、沙箱与本地 Shell、解释器 |
-| Module 3 上下文 | 摘要与卸载、Skills、记忆 |
-| Module 4 委派 | 委派、组建子智能体团队 |
-| Module 5（据第三方介绍） | 本地部署、销售助手项目、异步子智能体等 |
+| 模块 | 内容 | 本书 |
+|---|---|---|
+| Module 0–1 搭建 | 环境准备、运行一个 Deep Agent、模型、系统提示词、工具、MCP、消息/线程/检查点、HITL | 第 12 章 |
+| Module 2 环境 | 运行环境、文件系统后端与权限、沙箱与本地 Shell、解释器与 PTC | 第 13 章 |
+| Module 3 上下文 | 摘要与卸载、技能、长期记忆 | 第 13 章 |
+| Module 4 委派 | 任务清单、子智能体团队、动态子智能体 | 第 14 章 |
+| Module 5 综合项目 | 本地部署、Chinook 销售助理、异步子智能体、沙箱进阶版 | 第 14 章 |
+| Module 6 托管 | Managed Deep Agents | 第 14 章 |
 
 ## 📌 本章小结
 

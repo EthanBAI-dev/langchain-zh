@@ -355,4 +355,88 @@ export const quizzes: Record<string, Question[]> = {
       explain: '在线评估和 Insights 发现问题，回流到数据集，形成“观察 → 评估 → 改进”的闭环。',
     },
   ],
+  ch12: [
+    {
+      q: '从 deepagents 0.7 起，想让 Agent 用 `write_todos` 列任务清单，需要怎么做？',
+      options: ['什么都不用做，默认就有', '给 `middleware` 加 `TodoListMiddleware()`', '在系统提示词里写"请列清单"', '换成 `create_agent`'],
+      answer: 1,
+      explain: '0.7 起 `write_todos` 不再默认开启，要手动加 `TodoListMiddleware`。',
+    },
+    {
+      q: '给 `create_deep_agent` 传 `tools=[read_sql]` 之后，内置的文件工具还在吗？',
+      options: ['不在了，被替换掉了', '还在，自定义工具是叠加上去的', '只剩 `read_file`', '要重新声明才在'],
+      answer: 1,
+      explain: '你的工具叠加在内置工具（ls、read_file、write_file 等）之上，不会替换它们。',
+    },
+    {
+      q: '用 `interrupt_on` 暂停后，想让人直接回答 Agent 的提问（而不是批准某个动作），应该允许哪种决定？',
+      options: ['`approve`', '`edit`', '`reject`', '`respond`'],
+      answer: 3,
+      explain: '`respond` 把人的回答直接当成工具结果；对只允许 `respond` 的工具传 `approve` 会报错。',
+    },
+    {
+      q: '为什么两个不同的 `thread_id` 之间互相不记得对方说过的话？',
+      options: ['模型每次都会重置', '检查点按线程保存消息历史，线程之间是隔离的', 'LangSmith 删掉了记录', '因为没有用 Store'],
+      answer: 1,
+      explain: '检查点 + `thread_id` 构成短期记忆，每个线程有自己独立的消息历史。',
+    },
+  ],
+  ch13: [
+    {
+      q: '不传 `backend` 时，Deep Agent 的文件存在哪里？',
+      options: ['本地硬盘的当前目录', '当前线程的状态里（StateBackend）', 'LangSmith 云端', '系统临时目录'],
+      answer: 1,
+      explain: '默认是 `StateBackend()`，文件跟着线程状态走，适合当草稿。',
+    },
+    {
+      q: '`FilesystemPermission(operations=["write"], paths=["/reference/**"], mode="deny")` 生效后，模型去改 `/reference/` 下的文件会怎样？',
+      options: ['悄悄改成功', '在代码层被拦下，返回 permission denied 错误', '整个程序崩溃', '要看模型愿不愿意遵守'],
+      answer: 1,
+      explain: '权限在代码里执行，模型绕不过去；被拒的操作以错误信息回到模型。',
+    },
+    {
+      q: '关于 `LocalShellBackend`，下面哪句是对的？',
+      options: ['`virtual_mode=True` 能把 `execute` 也限制在 `root_dir` 里', '`root_dir` 只限制文件工具，`execute` 照样能访问整台电脑', '它自带进程隔离，可以放心上生产', '它不提供 `execute`'],
+      answer: 1,
+      explain: '`execute` 以你的用户权限运行，不受 `root_dir` 限制，所以建议给它配人工审批，生产环境用沙箱。',
+    },
+    {
+      q: '程序化工具调用（PTC）为什么能减少模型往返次数？',
+      options: ['它换了更快的模型', 'JS 代码在解释器里直接串联工具调用，中间结果留在变量里，只把最终结果交回模型', '它把工具结果缓存起来', '它跳过了工具执行'],
+      answer: 1,
+      explain: '课程实验里同一个问题：有 PTC 2 次模型往返，没 PTC 5 次。',
+    },
+    {
+      q: '技能（Skill）的"渐进式披露"指的是？',
+      options: ['所有技能全文每次都放进系统提示词', '系统提示词里只有名字和描述，需要时模型才用 `read_file` 读全文', '技能按字母顺序依次加载', '用户手动选择技能'],
+      answer: 1,
+      explain: '发现靠描述，激活靠 `read_file`，没用到的技能正文从不进上下文。',
+    },
+  ],
+  ch14: [
+    {
+      q: '子智能体被调用时，能看到主 Agent 的对话历史吗（默认情况下）？',
+      options: ['能，全部继承', '不能，只收到一条任务描述', '只能看到最后一条消息', '能看到但不能用'],
+      answer: 1,
+      explain: '这就是上下文隔离：一条任务进去，一条结果出来。想让它看到对话要用实验性的 `"mode": "fork"`。',
+    },
+    {
+      q: '要对 1000 份录音逐一总结，为什么推荐动态子智能体？',
+      options: ['因为它用的模型更强', '循环写在代码里，保证每一项都被处理，不靠模型记进度', '因为它不需要子智能体', '因为它更便宜'],
+      answer: 1,
+      explain: '让代码去数而不是让模型去记，避免做到一半就宣布完成。提示词里说 "workflow" 会触发这种写法。',
+    },
+    {
+      q: '`start_async_task` 调用后，主 Agent 应该怎么做？',
+      options: ['马上循环调 `check_async_task` 直到完成', '报告 `task_id` 然后把控制权还给用户，等用户问起再查', '取消任务', '重新启动一个同样的任务'],
+      answer: 1,
+      explain: '启动完就停；用户问起才查；而且不要相信对话里旧的状态。',
+    },
+    {
+      q: '综合项目里 `langgraph.json` 为什么指向 `make_graph` 工厂函数，而不是一个现成的 `graph`？',
+      options: ['工厂函数跑得更快', '邮件 MCP 工具要运行时连上服务器才知道有哪些，没法提前建好图', 'Studio 只认工厂函数', '为了少写代码'],
+      answer: 1,
+      explain: '工具在运行时才确定，所以让 `langgraph dev` 启动时调用工厂来建图。',
+    },
+  ],
 }

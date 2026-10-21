@@ -18,8 +18,8 @@ hero:
 
 features:
   - icon: 🧭
-    title: 循序渐进的 12 章
-    details: 环境准备 → create_agent → LangGraph 图 → 记忆与人在回路 → 多智能体 → 部署 → Deep Agents → LangSmith，每章都有目标、小结和动手练习。
+    title: 循序渐进的 15 章
+    details: 环境准备 → create_agent → LangGraph 图 → 记忆与人在回路 → 多智能体 → 部署 → Deep Agents → LangSmith → Deep Agents 实战，每章都有目标、小结和动手练习。
     link: /learn/
     linkText: 查看学习路线
   - icon: 🎞️

@@ -1,0 +1,18 @@
+{
+  "name": "langchain-zh",
+  "version": "1.0.0",
+  "description": "LangChain 中文学堂：LangChain Academy 中文图文教程 + 互动学习站",
+  "scripts": {
+    "content": "node scripts/prepare.mjs",
+    "dev": "node scripts/prepare.mjs && vitepress dev docs",
+    "build": "node scripts/prepare.mjs && vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.22"
+  },
+  "private": true,
+  "type": "module"
+}

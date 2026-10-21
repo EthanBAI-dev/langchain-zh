@@ -1,0 +1,15 @@
+[
+  { "slug": "ch00", "file": "00-环境准备.md", "num": "0", "title": "环境准备", "part": "开始之前", "minutes": 15 },
+  { "slug": "ch01", "file": "01-十分钟造一个Agent.md", "num": "1", "title": "十分钟造一个 Agent", "part": "LangChain 入门", "minutes": 25 },
+  { "slug": "ch02", "file": "02-Agent的积木.md", "num": "2", "title": "Agent 的积木", "part": "LangChain 入门", "minutes": 30 },
+  { "slug": "ch03", "file": "03-记忆结构化输出与中间件.md", "num": "3", "title": "记忆、结构化输出与中间件", "part": "LangChain 入门", "minutes": 30 },
+  { "slug": "ch04", "file": "04-LangGraph图的基本功.md", "num": "4", "title": "LangGraph 图的基本功", "part": "LangGraph 进阶", "minutes": 35 },
+  { "slug": "ch05", "file": "05-状态与短期记忆.md", "num": "5", "title": "状态与短期记忆", "part": "LangGraph 进阶", "minutes": 40 },
+  { "slug": "ch06", "file": "06-人在回路.md", "num": "6", "title": "人在回路", "part": "LangGraph 进阶", "minutes": 35 },
+  { "slug": "ch07", "file": "07-并行子图与多智能体.md", "num": "7", "title": "并行、子图与多智能体", "part": "LangGraph 进阶", "minutes": 50 },
+  { "slug": "ch08", "file": "08-长期记忆.md", "num": "8", "title": "长期记忆", "part": "LangGraph 进阶", "minutes": 40 },
+  { "slug": "ch09", "file": "09-部署上线.md", "num": "9", "title": "部署上线", "part": "LangGraph 进阶", "minutes": 30 },
+  { "slug": "ch10", "file": "10-DeepAgents.md", "num": "10", "title": "Deep Agents", "part": "高级专题", "minutes": 55 },
+  { "slug": "ch11", "file": "11-LangSmith.md", "num": "11", "title": "LangSmith", "part": "高级专题", "minutes": 30 },
+  { "slug": "appendix", "file": "附录-速查表与术语表.md", "num": "附录", "title": "速查表与术语表", "part": "附录", "minutes": 10 }
+]

@@ -3,7 +3,7 @@
 > **本章目标**：学会让主 Agent "带团队"：用任务清单管住自己，用子智能体把脏活累活分出去，任务成百上千时让代码去派活，慢活交给后台异步跑。最后把整门课的所有零件拼成一个真实的销售助理，部署成一个能用浏览器聊天的服务，并了解托管版 Managed Deep Agents。
 > **对应课程**：Introduction to Deep Agents · Module 4「Delegation」（Delegation、Building a Subagent Team、Dynamic Subagents）+ Module 5「Putting It All Together」（Local Deployment、The Sales Assistant、Async Subagents、Sales Assistant Advanced）+ Module 6「Managed Deep Agents」
 
-[← 上一章](13-DeepAgents运行环境与上下文.md) ｜ [返回导读](README.md) ｜ [下一章 →](附录-速查表与术语表.md)
+[← 上一章](13-DeepAgents运行环境与上下文.md) ｜ [返回导读](README.md) ｜ [下一章 →](15-LangSmith追踪与评估.md)
 
 ---
 
@@ -549,4 +549,4 @@ uv run mda evals init       # 基于 Harbor 生成评测工作区
 4. **部署你的 Agent**：给第 12 章练习里的"领域助手"加一个 `langgraph.json`，用 `langgraph dev` 跑起来，再用 LangGraph SDK 写一个脚本直接调 Threads / Runs 接口问它问题。
 5. **异步全流程**：照着 14.7 的实验依次触发 `start`、`update`、`cancel`、`check`、`list` 五个工具；中途关掉 2025 端口的服务器，看主 Agent 的反应。
 
-[下一章：附录 · 速查表与术语表 →](附录-速查表与术语表.md)
+[下一章：LangSmith 追踪与评估 →](15-LangSmith追踪与评估.md)

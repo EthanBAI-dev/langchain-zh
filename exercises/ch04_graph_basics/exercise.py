@@ -63,6 +63,7 @@ def multiply(a: int, b: int) -> int:
 
 
 def subtract(a: int, b: int) -> int:
+    """TODO 4.2：把这行换成真正的说明书（docstring）"""
     raise NotImplementedError("TODO 4.2：写 subtract 和它的 docstring")
 
 

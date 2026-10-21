@@ -11,7 +11,7 @@
 | 你的情况 | 建议读法 |
 |---|---|
 | 会一点 Python，从没写过 AI Agent | 从第 1 章顺序读，每章末尾的"动手练习"一定要做 |
-| 用过 LangChain 老版本（`create_react_agent`、LCEL） | 直接看第 1、3 章，了解 1.0 的 `create_agent` 与中间件；再看第 10 章 |
+| 用过 LangChain 老版本（`create_react_agent`、LCEL） | 直接看第 1、3 章，了解 1.0 的 `create_agent` 与中间件；再看第 17–18 章的动态中间件和第 10 章 |
 | 想把 Agent 做成产品 | 重点读第 6（人在回路）、8（长期记忆）、9（部署）、11 和 15–16（LangSmith）章 |
 | 想做 Claude Code / Manus 那样的"长任务 Agent" | 第 4 章打底，然后读第 10 章（原理）和第 12–14 章（官方库实战） |
 
@@ -40,7 +40,8 @@ Academy 上的课程会持续更新，下面是撰写本教程时（2026 年 10 
 
 | Academy 课程 | 内容 | 本教程章节 |
 |---|---|---|
-| **LangChain Essentials（Python）** / Introduction to LangChain | `create_agent`、消息、流式、工具、MCP、记忆、结构化输出、中间件 | 第 1–3 章 |
+| **LangChain Essentials（Python）** | `create_agent`、消息、流式、工具、MCP、记忆、结构化输出、中间件 | 第 1–3 章 |
+| **Introduction to LangChain（Python）**（新版，Module 1–3） | 模型与提示词、多模态消息、MCP 资源与提示词、上下文与状态、多智能体、管理消息、人在回路、动态模型/提示词/工具；私人厨师、婚礼策划、邮件助手三个项目 | 第 17–18 章（与第 1–3 章重叠的部分会指回去） |
 | **Introduction to LangGraph** | 图的基本功 → 状态与记忆 → 人在回路 → 并行与子图 → 长期记忆 → 部署（Module 0–6） | 第 4–9 章 |
 | **Deep Agents from Scratch** | 从零实现 TODO 规划、虚拟文件系统、子智能体 | 第 10 章 |
 | **Introduction to Deep Agents**（Module 0–6） | 官方 `deepagents` 库：模型、工具、MCP、HITL、后端与权限、沙箱、解释器、摘要、技能、记忆、子智能体、动态子智能体、部署、异步子智能体、Managed Deep Agents | 第 12–14 章 |
@@ -73,6 +74,8 @@ Academy 上的课程会持续更新，下面是撰写本教程时（2026 年 10 
 | [第 14 章 Deep Agents 委派与综合项目](14-DeepAgents委派与综合项目.md) | 子智能体团队、动态子智能体、本地部署、销售助理项目、异步子智能体、托管版 | `subagents=`、`TodoListMiddleware`、`AsyncSubAgent`、`langgraph dev` |
 | [第 15 章 LangSmith 追踪与评估](15-LangSmith追踪与评估.md) | 四种追踪接法、Run 类型、线程、Studio 调试、数据集、评估器、实验、两两对比、汇总评估器 | `@traceable`、`wrap_openai`、`evaluate`、`summary_evaluators` |
 | [第 16 章 LangSmith 提示工程与生产监控](16-LangSmith提示工程与生产监控.md) | Playground、Prompt Hub、部署、反馈、过滤、在线评估器、自动化、标注队列、Insights、仪表盘、Engine | `pull_prompt`、`create_feedback`、`list_runs` |
+| [第 17 章 新版 LangChain 入门（上）](17-LangChain新版入门-模型工具与多智能体.md) | 换模型、四种提示词、多模态消息、MCP 资源与提示词、上下文与状态、子智能体当工具、私人厨师、婚礼策划 | `init_chat_model`、`content_blocks`、`get_prompt`、`context_schema`、`Command` |
+| [第 18 章 新版 LangChain 入门（下）](18-LangChain新版入门-管理消息与动态Agent.md) | 摘要与删除消息、人在回路三种决定、动态模型/提示词/工具、邮件助手、Agent Chat UI | `SummarizationMiddleware`、`@wrap_model_call`、`@dynamic_prompt` |
 | [附录 速查表与术语表](附录-速查表与术语表.md) | 一页纸复习 | — |
 
 ---
@@ -102,7 +105,8 @@ Academy 上的课程会持续更新，下面是撰写本教程时（2026 年 10 
   - [langchain-ai/deep-agents-from-scratch](https://github.com/langchain-ai/deep-agents-from-scratch) 与 [langchain-ai/deepagents](https://github.com/langchain-ai/deepagents) → 第 10 章
   - [langchain-ai/lca-deepagents](https://github.com/langchain-ai/lca-deepagents) 与 Academy 课程页面（Introduction to Deep Agents 各课正文）→ 第 12–14 章
   - [langchain-ai/intro-to-langsmith](https://github.com/langchain-ai/intro-to-langsmith)、[langchain-ai/lca-langsmith-essentials](https://github.com/langchain-ai/lca-langsmith-essentials) 与 LangSmith 官方文档 → 第 15–16 章
+  - [langchain-ai/lca-lc-foundations](https://github.com/langchain-ai/lca-lc-foundations)（新版 Introduction to LangChain 的 notebook）→ 第 17–18 章
   - 课程目录、LangSmith 课程大纲、认证信息来自 Academy 公开页面的搜索结果 → 第 11 章及本页"课程列表"
-- 第 4–7 章中凡标注 **"本地实测"** 的输出，都是用 `langgraph 1.2.16 / langchain 1.4.6 / deepagents 0.7.28` 在本地真实运行得到的；第 12–14 章的"本地实测"用 `deepagents 0.7.29` 配合脚本化的假模型运行（验证框架行为，不调用真实大模型）；第 15–16 章的"本地实测"用 `langsmith 0.14.11` 离线运行，披萨店的两个 Bug 用假模型驱动课程仓库的工具复现；需要调用大模型的输出则来自课程原文，因模型随机性你的结果可能略有不同。
+- 第 4–7 章中凡标注 **"本地实测"** 的输出，都是用 `langgraph 1.2.16 / langchain 1.4.6 / deepagents 0.7.28` 在本地真实运行得到的；第 12–14 章的"本地实测"用 `deepagents 0.7.29` 配合脚本化的假模型运行（验证框架行为，不调用真实大模型）；第 15–16 章的"本地实测"用 `langsmith 0.14.11` 离线运行，披萨店的两个 Bug 用假模型驱动课程仓库的工具复现；第 17–18 章的"本地实测"用 `langchain 1.4.6`、`langchain-mcp-adapters 0.3.2` 配合假模型和本地 MCP 服务器运行；需要调用大模型的输出则来自课程原文，因模型随机性你的结果可能略有不同。
 - `assets/course/` 中的图片来自上述官方课程仓库（MIT 许可），`assets/figures/` 中的图和动图为本教程原创绘制。
 - 课程代码默认使用 OpenAI 模型，你可以把 `"openai:gpt-5-mini"` 换成任何支持工具调用的模型，例如 `"anthropic:claude-sonnet-4-5"`，只需配置对应的 API Key。

@@ -16,5 +16,7 @@
   { "slug": "ch14", "file": "14-DeepAgents委派与综合项目.md", "num": "14", "title": "委派、综合项目与部署", "part": "Deep Agents 实战", "minutes": 60 },
   { "slug": "ch15", "file": "15-LangSmith追踪与评估.md", "num": "15", "title": "LangSmith 追踪与评估", "part": "LangSmith 实战", "minutes": 55 },
   { "slug": "ch16", "file": "16-LangSmith提示工程与生产监控.md", "num": "16", "title": "提示工程与生产监控", "part": "LangSmith 实战", "minutes": 55 },
+  { "slug": "ch17", "file": "17-LangChain新版入门-模型工具与多智能体.md", "num": "17", "title": "新版入门（上）：模型、多模态与多智能体", "part": "新版 LangChain 入门", "minutes": 60 },
+  { "slug": "ch18", "file": "18-LangChain新版入门-管理消息与动态Agent.md", "num": "18", "title": "新版入门（下）：管理消息与动态 Agent", "part": "新版 LangChain 入门", "minutes": 50 },
   { "slug": "appendix", "file": "附录-速查表与术语表.md", "num": "附录", "title": "速查表与术语表", "part": "附录", "minutes": 10 }
 ]

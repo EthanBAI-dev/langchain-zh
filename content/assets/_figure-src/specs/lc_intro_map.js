@@ -1,10 +1,10 @@
 module.exports = {
   title: '新版 Introduction to LangChain：3 个模块，3 个项目', width: 1100, height: 430,
-  caption: '每个模块最后都有一个综合项目；和 LangChain Essentials 重叠的部分在第 1–3 章，新内容在第 17–18 章',
+  caption: '每个模块最后都有一个综合项目；和 LangChain Essentials 重叠的部分在第 1–3 章，新内容在第 4–5 章',
   groups: [
-    { id: 'g1', x: 0, y: 0, w: 350, h: 430, label: 'Module 1 · Create Agent（第 17 章上半）', fill: 'rgba(239,246,255,.7)' },
-    { id: 'g2', x: 375, y: 0, w: 350, h: 430, label: 'Module 2 · Advanced Agent（第 17 章下半）', fill: 'rgba(255,247,237,.7)' },
-    { id: 'g3', x: 750, y: 0, w: 350, h: 430, label: 'Module 3 · Context Engineering（第 18 章）', fill: 'rgba(240,253,244,.7)' },
+    { id: 'g1', x: 0, y: 0, w: 350, h: 430, label: 'Module 1 · Create Agent（第 4 章上半）', fill: 'rgba(239,246,255,.7)' },
+    { id: 'g2', x: 375, y: 0, w: 350, h: 430, label: 'Module 2 · Advanced Agent（第 4 章下半）', fill: 'rgba(255,247,237,.7)' },
+    { id: 'g3', x: 750, y: 0, w: 350, h: 430, label: 'Module 3 · Context Engineering（第 5 章）', fill: 'rgba(240,253,244,.7)' },
   ],
   nodes: [
     { id: 'a', kind: 'llm', x: 20, y: 50, w: 310, h: 220, label: '🧠 基础', sub: '1.1 模型 · 提示词 · 结构化输出\n1.2 工具 · 联网搜索\n1.3 记忆\n1.4 多模态消息（图片 / 音频）' },

@@ -9,4 +9,4 @@ aside: false
 
 <ReducerLab />
 
-相关章节：[第 5 章 状态与短期记忆](/learn/ch05) · [第 7 章 并行、子图与多智能体](/learn/ch07)
+相关章节：[第 7 章 状态与短期记忆](/learn/ch07) · [第 9 章 并行、子图与多智能体](/learn/ch09)

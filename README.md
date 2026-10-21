@@ -36,9 +36,9 @@
 | 你的情况 | 推荐用法 |
 |---|---|
 | 会一点 Python，从没写过 AI Agent | 打开学习站，从第 0 章按顺序学，每章做完小测验和练习 |
-| 用过老版 LangChain（LCEL、`create_react_agent`） | 先看第 1、3 章的 `create_agent` 和中间件，再看第 17–18 章 |
-| 想把 Agent 做成产品 | 重点看第 6、8、9 章（人在回路、长期记忆、部署）和第 15–16 章（LangSmith） |
-| 想做长任务 Agent | 第 4 章打底，再看第 10 章原理和第 12–14 章实战 |
+| 用过老版 LangChain（LCEL、`create_react_agent`） | 先看第 1、3 章的 `create_agent` 和中间件，再看第 4–5 章 |
+| 想把 Agent 做成产品 | 重点看第 8、10、11 章（人在回路、长期记忆、部署）和第 17–18 章（LangSmith） |
+| 想做长任务 Agent | 第 6 章打底，再看第 12 章原理和第 14–16 章实战 |
 | 只想先有个大概印象 | 刷一刷 `social/` 里的 12 篇图文卡片，每篇 5 分钟 |
 
 **前置知识**：会写 Python 函数和类、知道什么是 API Key 就够了，不需要机器学习背景。
@@ -51,7 +51,7 @@
 |---|---|---|
 | [`content/`](content/README.md) | 📖 **教程正文**：19 章 + 附录，Markdown 格式，配 50 多张原创示意图和动图 | 在 GitHub 上直接点开读，或者去学习站读 |
 | [`site/`](site/README.md) | 🌐 **互动学习站**（VitePress）：把教程渲染成网站，加上测验、进度、实验室、中文搜索 | 打开 [在线地址](https://ethanbai-dev.github.io/langchain-zh/)，或在本地 `npm run dev` |
-| [`exercises/`](exercises/README.md) | 🧪 **LangChain 练手题**：12 章、42 道题，填 `TODO`，一条命令自动检查 | 配合教程第 0–11 章做 |
+| [`exercises/`](exercises/README.md) | 🧪 **LangChain 练手题**：12 章、42 道题，填 `TODO`，一条命令自动检查 | 配合教程第 0–3、6–13 章做 |
 | [`exercises-langgraph/`](exercises-langgraph/README.md) | 🧪 **LangGraph 练手题**：16 章、56 道题，最后一章是邮件助理综合项目 | 想把 LangGraph 练扎实时做 |
 | [`social/`](social/README.md) | 📱 **小红书 / 抖音图文**：12 篇、共 76 张卡片，难度比教程更低 | 入门预习、分享给朋友 |
 
@@ -61,7 +61,7 @@
 
 ## 章节目录
 
-整套教程预计学习时长约 **13 小时**，可以分成六段：
+整套教程预计学习时长约 **13 小时**，可以分成五段：
 
 ### 🚀 开始之前 & LangChain 入门
 
@@ -71,46 +71,41 @@
 | 1 | [十分钟造一个 Agent](content/01-十分钟造一个Agent.md) | 用 `create_agent` 做一个会查数据库的 SQL 智能体 |
 | 2 | [Agent 的积木](content/02-Agent的积木.md) | 消息、流式输出、工具描述、MCP |
 | 3 | [记忆、结构化输出与中间件](content/03-记忆结构化输出与中间件.md) | 记住对话、输出 JSON、动态提示词、人工审批 |
+| 4 | [模型、多模态与多智能体](content/04-模型多模态与多智能体.md) | 换模型、多模态消息、MCP 资源、子智能体当工具 |
+| 5 | [管理消息与动态 Agent](content/05-管理消息与动态Agent.md) | 摘要与删除消息、动态模型/提示词/工具、邮件助手 |
 
 ### 🧩 LangGraph 进阶
 
 | 章 | 标题 | 你将学会 |
 |---|---|---|
-| 4 | [LangGraph 图的基本功](content/04-LangGraph图的基本功.md) | 从零搭出一个 ReAct Agent |
-| 5 | [状态与短期记忆](content/05-状态与短期记忆.md) | Reducer、裁剪消息、滚动摘要、SQLite 持久化 |
-| 6 | [人在回路](content/06-人在回路.md) | 断点、修改状态、动态中断、时间旅行 |
-| 7 | [并行、子图与多智能体](content/07-并行子图与多智能体.md) | 扇出扇入、子图、Map-Reduce、研究助手项目 |
-| 8 | [长期记忆](content/08-长期记忆.md) | 跨会话记住用户：Profile 与 Collection |
-| 9 | [部署上线](content/09-部署上线.md) | 把图变成服务：Assistants、Threads、Runs |
+| 6 | [LangGraph 图的基本功](content/06-LangGraph图的基本功.md) | 从零搭出一个 ReAct Agent |
+| 7 | [状态与短期记忆](content/07-状态与短期记忆.md) | Reducer、裁剪消息、滚动摘要、SQLite 持久化 |
+| 8 | [人在回路](content/08-人在回路.md) | 断点、修改状态、动态中断、时间旅行 |
+| 9 | [并行、子图与多智能体](content/09-并行子图与多智能体.md) | 扇出扇入、子图、Map-Reduce、研究助手项目 |
+| 10 | [长期记忆](content/10-长期记忆.md) | 跨会话记住用户：Profile 与 Collection |
+| 11 | [部署上线](content/11-部署上线.md) | 把图变成服务：Assistants、Threads、Runs |
 
 ### 🧠 高级专题
 
 | 章 | 标题 | 你将学会 |
 |---|---|---|
-| 10 | [Deep Agents](content/10-DeepAgents.md) | 规划、文件系统、子智能体的原理，从零实现一遍 |
-| 11 | [LangSmith](content/11-LangSmith.md) | 追踪、评估、提示工程、上线监控概览 |
+| 12 | [Deep Agents](content/12-DeepAgents.md) | 规划、文件系统、子智能体的原理，从零实现一遍 |
+| 13 | [LangSmith](content/13-LangSmith.md) | 追踪、评估、提示工程、上线监控概览 |
 
 ### 🤖 Deep Agents 实战
 
 | 章 | 标题 | 你将学会 |
 |---|---|---|
-| 12 | [Deep Agents 上手](content/12-DeepAgents上手.md) | 用官方 `deepagents` 库：模型、工具、MCP、人工审批 |
-| 13 | [运行环境与上下文](content/13-DeepAgents运行环境与上下文.md) | 后端与权限、沙箱、解释器、摘要、技能、长期记忆 |
-| 14 | [委派、综合项目与部署](content/14-DeepAgents委派与综合项目.md) | 子智能体团队、动态子智能体、销售助理项目 |
+| 14 | [Deep Agents 上手](content/14-DeepAgents上手.md) | 用官方 `deepagents` 库：模型、工具、MCP、人工审批 |
+| 15 | [运行环境与上下文](content/15-DeepAgents运行环境与上下文.md) | 后端与权限、沙箱、解释器、摘要、技能、长期记忆 |
+| 16 | [委派、综合项目与部署](content/16-DeepAgents委派与综合项目.md) | 子智能体团队、动态子智能体、销售助理项目 |
 
 ### 📊 LangSmith 实战
 
 | 章 | 标题 | 你将学会 |
 |---|---|---|
-| 15 | [追踪与评估](content/15-LangSmith追踪与评估.md) | 四种追踪接法、数据集、评估器、实验对比 |
-| 16 | [提示工程与生产监控](content/16-LangSmith提示工程与生产监控.md) | Prompt Hub、在线评估、标注队列、仪表盘 |
-
-### ✨ 新版 LangChain 入门
-
-| 章 | 标题 | 你将学会 |
-|---|---|---|
-| 17 | [模型、多模态与多智能体](content/17-LangChain新版入门-模型工具与多智能体.md) | 换模型、多模态消息、MCP 资源、子智能体当工具 |
-| 18 | [管理消息与动态 Agent](content/18-LangChain新版入门-管理消息与动态Agent.md) | 摘要与删除消息、动态模型/提示词/工具、邮件助手 |
+| 17 | [追踪与评估](content/17-LangSmith追踪与评估.md) | 四种追踪接法、数据集、评估器、实验对比 |
+| 18 | [提示工程与生产监控](content/18-LangSmith提示工程与生产监控.md) | Prompt Hub、在线评估、标注队列、仪表盘 |
 | 附录 | [速查表与术语表](content/附录-速查表与术语表.md) | 一页纸复习所有 API 和术语 |
 
 ---

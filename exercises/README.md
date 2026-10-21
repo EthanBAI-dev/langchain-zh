@@ -60,14 +60,15 @@ pytest                      # 检查全部章节
 | [`ch01_sql_agent`](ch01_sql_agent/exercise.py) | 第 1 章 十分钟造一个 Agent | 只读 SQL 工具、`get_runtime` 注入数据库、`create_agent`、数工具调用 |
 | [`ch02_building_blocks`](ch02_building_blocks/exercise.py) | 第 2 章 Agent 的积木 | 给计算器加幂运算、`get_stream_writer` 推进度、`updates` / `custom` 流式模式 |
 | [`ch03_memory_middleware`](ch03_memory_middleware/exercise.py) | 第 3 章 记忆、结构化输出与中间件 | `thread_id` 短期记忆、提取 `Order`、`@dynamic_prompt`、带"改参数"的人工审批 |
-| [`ch04_graph_basics`](ch04_graph_basics/exercise.py) | 第 4 章 LangGraph 图的基本功 | 条件边、`subtract` 工具、从零搭 ReAct 循环、并行工具调用 |
-| [`ch05_state_memory`](ch05_state_memory/exercise.py) | 第 5 章 状态与短期记忆 | 自定义 reducer、`RemoveMessage`、滚动摘要机器人、SQLite 持久化 |
-| [`ch06_human_in_loop`](ch06_human_in_loop/exercise.py) | 第 6 章 人在回路 | 断点审批、只对 `divide` 动态中断、时间旅行分叉 |
-| [`ch07_parallel_subgraphs`](ch07_parallel_subgraphs/exercise.py) | 第 7 章 并行、子图与多智能体 | 三路并行检索、`Send` Map-Reduce 总结长文、子图当节点 |
-| [`ch08_long_term_memory`](ch08_long_term_memory/exercise.py) | 第 8 章 长期记忆 | `Store` 存取、跨会话记住用户、扩展 `UserProfile` |
-| [`ch09_deployment`](ch09_deployment/exercise.py) | 第 9 章 部署上线 | 可部署的图 + `langgraph.json`、两个 Assistant、轮询后台 Run |
-| [`ch10_deep_agents`](ch10_deep_agents/exercise.py) | 第 10 章 Deep Agents | 工具返回 `Command`、从零写虚拟文件系统、`create_deep_agent` 读书笔记助手 |
-| [`ch11_langsmith`](ch11_langsmith/exercise.py) | 第 11 章 LangSmith | 从 trace 找 SQL、建数据集、写评估器、本地对比实验 |
+| 第 4–5 章暂无 | 第 4–5 章 模型、多模态与多智能体 / 管理消息与动态 Agent | 暂时没有自动检查的练习，先做章末的「🧪 动手练习」 |
+| [`ch06_graph_basics`](ch06_graph_basics/exercise.py) | 第 6 章 LangGraph 图的基本功 | 条件边、`subtract` 工具、从零搭 ReAct 循环、并行工具调用 |
+| [`ch07_state_memory`](ch07_state_memory/exercise.py) | 第 7 章 状态与短期记忆 | 自定义 reducer、`RemoveMessage`、滚动摘要机器人、SQLite 持久化 |
+| [`ch08_human_in_loop`](ch08_human_in_loop/exercise.py) | 第 8 章 人在回路 | 断点审批、只对 `divide` 动态中断、时间旅行分叉 |
+| [`ch09_parallel_subgraphs`](ch09_parallel_subgraphs/exercise.py) | 第 9 章 并行、子图与多智能体 | 三路并行检索、`Send` Map-Reduce 总结长文、子图当节点 |
+| [`ch10_long_term_memory`](ch10_long_term_memory/exercise.py) | 第 10 章 长期记忆 | `Store` 存取、跨会话记住用户、扩展 `UserProfile` |
+| [`ch11_deployment`](ch11_deployment/exercise.py) | 第 11 章 部署上线 | 可部署的图 + `langgraph.json`、两个 Assistant、轮询后台 Run |
+| [`ch12_deep_agents`](ch12_deep_agents/exercise.py) | 第 12 章 Deep Agents | 工具返回 `Command`、从零写虚拟文件系统、`create_deep_agent` 读书笔记助手 |
+| [`ch13_langsmith`](ch13_langsmith/exercise.py) | 第 13 章 LangSmith | 从 trace 找 SQL、建数据集、写评估器、本地对比实验 |
 
 题目大多来自每章末尾的「🧪 动手练习」，题号旁边会注明，比如 `（教程练习 2）`。
 
@@ -124,10 +125,10 @@ model = ScriptedChatModel([
 **Q：提示 `假模型的剧本用完了`？**
 说明模型被调用的次数比预期多：可能少连了一条边、多调了一次模型，或者图进入了死循环。
 
-**Q：第 2 章的 MCP、第 11 章的 LangSmith 线上功能怎么练？**
-这两部分需要联网和账号，没法离线自动检查。第 11 章先在本地把"数据集 + 评估器 + 实验"
+**Q：第 2 章的 MCP、第 13 章的 LangSmith 线上功能怎么练？**
+这两部分需要联网和账号，没法离线自动检查。第 13 章先在本地把"数据集 + 评估器 + 实验"
 写对，评估器的签名和 LangSmith `evaluate()` 完全一样，有账号后可以直接拿去用
-（`ch11_langsmith/exercise.py` 末尾有示例）。MCP 请按教程 2.4 节动手。
+（`ch13_langsmith/exercise.py` 末尾有示例）。MCP 请按教程 2.4 节动手。
 
 **Q：版本？**
 和教程正文一样，基于 `langchain 1.4.6`、`langgraph 1.2.16`、`deepagents 0.7.28` 验证。

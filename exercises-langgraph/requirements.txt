@@ -1,0 +1,11 @@
+# 和教程正文验证过的版本保持一致
+langchain==1.4.6
+langgraph==1.2.16
+langgraph-checkpoint-sqlite>=3.0
+pytest>=8
+python-dotenv>=1.0
+numpy  # 第 13 章语义检索用，可选
+
+# 想换成真模型时，按需装一个（并在 .env 里填 API Key）：
+# langchain-openai
+# langchain-anthropic

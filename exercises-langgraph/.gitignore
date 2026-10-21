@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.sqlite
+*.db
+.venv/
+ch00_setup/langgraph.json
+ch14_deployment/langgraph.json

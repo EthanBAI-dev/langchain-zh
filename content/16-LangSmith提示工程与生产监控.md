@@ -3,7 +3,7 @@
 > **本章目标**：学会把提示词交给 Prompt Hub 管理、在 Playground 里做提示词实验；把 Agent 部署上线，收集用户反馈，用在线评估器、自动化规则、标注队列、Insights 和仪表盘盯住线上流量，最后抓出只有真实流量才暴露的 Bug 2。最后看看 LangSmith Engine 怎么把这个循环自动化。
 > **对应课程**：LangSmith Essentials · Module 3「Deployments」+ Module 4「Online Evaluation & Monitoring」（Online Evaluators and Automations、Annotation Queues、Insights、Dashboards、Capstone）+ Module 5「Closing the Loop」（Closing the Loop、Automating the ADLC with LangSmith Engine）；Intro to LangSmith · Module 3–5（Playground 实验、Prompt Hub、提示工程生命周期、发布反馈、过滤、在线评估）
 
-[← 上一章](15-LangSmith追踪与评估.md) ｜ [返回导读](README.md) ｜ [下一章 →](附录-速查表与术语表.md)
+[← 上一章](15-LangSmith追踪与评估.md) ｜ [返回导读](README.md) ｜ [下一章 →](17-LangChain新版入门-模型工具与多智能体.md)
 
 ---
 
@@ -451,4 +451,4 @@ LangSmith 界面右下角有一个聊天助手 **LangSmith Chat**（以前叫 Po
 
 🎉 **LangSmith 两门课到这里就学完了。** 回头看第 11 章那张循环图，现在每一格你都亲手做过一遍。
 
-[下一章：附录 · 速查表与术语表 →](附录-速查表与术语表.md)
+[下一章：新版 LangChain 入门（上）→](17-LangChain新版入门-模型工具与多智能体.md)

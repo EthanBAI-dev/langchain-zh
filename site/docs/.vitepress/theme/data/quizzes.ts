@@ -491,4 +491,56 @@ export const quizzes: Record<string, Question[]> = {
       explain: '预签名链接不需要密钥，还可以配合预生成的 `run_id` 在 run 产生之前就生成。',
     },
   ],
+  ch17: [
+    {
+      q: '想让 Agent 看一张 PNG 图片，消息该怎么写？',
+      options: ['把图片路径写进文字里', '`content` 写成内容块列表，加一个 `{"type": "image", "base64": ..., "mime_type": "image/png"}`', '用 `ToolMessage` 发图片', '必须先把图片转成文字'],
+      answer: 1,
+      explain: '按 LangChain 的标准块写，集成包会翻译成各家的格式，比如 OpenAI 的 `image_url`。',
+    },
+    {
+      q: '用户 ID 这种"调用时就知道、对话中不会变"的信息，适合放在哪？',
+      options: ['自定义状态', '运行时上下文（`context_schema`）', '系统提示词里写死', '让模型记住'],
+      answer: 1,
+      explain: '上下文由你在 `invoke` 时递进来，工具里用 `runtime.context` 读，一次调用里只读。',
+    },
+    {
+      q: '婚礼策划里，`update_state` 的说明为什么要求"必须单独调用"？',
+      options: ['为了省 token', '如果和专家工具同一轮并行执行，专家读状态时信息还没写进去', 'MCP 要求', '这是 Python 语法限制'],
+      answer: 1,
+      explain: '专家工具没有参数、全靠 `runtime.state` 读信息，所以必须先写完状态再派活。',
+    },
+    {
+      q: 'MCP 服务器上的工具函数自己抛了异常，客户端的重试拦截器会怎样？',
+      options: ['自动重试 3 次', '不会重试：服务器把错误包成正常结果返回，客户端看不到异常', '程序崩溃', '换一个服务器'],
+      answer: 1,
+      explain: '本地实测拦截器只执行了 1 次。重试只对连接断开、协议错误这类问题起作用。',
+    },
+  ],
+  ch18: [
+    {
+      q: '`SummarizationMiddleware(trigger=("tokens", 100), keep=("messages", 1))` 压缩后，旧消息的原文还在状态里吗？',
+      options: ['在，只是模型看不到', '不在了，被一条摘要消息替换', '存进了文件', '存进了 Store'],
+      answer: 1,
+      explain: '实测 9 条消息压缩后只剩 3 条：摘要、最后的问题、回答。和 Deep Agents 的"原文存文件"不同。',
+    },
+    {
+      q: '人在回路中选"拒绝"并附上理由后，会发生什么？',
+      options: ['对话结束', '模型收到理由，可以改完再调用一次，又会停下来等审批', '工具照样执行', '理由被忽略'],
+      answer: 1,
+      explain: '工具消息会写成"User rejected the tool call ... with reason: ..."，模型据此调整。',
+    },
+    {
+      q: '想让外部用户用不到数据库工具，最可靠的做法是？',
+      options: ['在提示词里说"不要用数据库"', '用 `@wrap_model_call` 把 `tools` 换成不含数据库的列表', '删掉数据库', '让模型自己判断'],
+      answer: 1,
+      explain: '模型看不到的工具就不可能调用。权限写在代码里，而不是求模型听话。',
+    },
+    {
+      q: '邮件助手的 `create_agent(tools=[...])` 为什么要把三个工具全列上？',
+      options: ['为了好看', '中间件只能从已登记的工具里挑，没登记的工具 Agent 不知道怎么执行', '模型需要先看到全部工具', '这样更快'],
+      answer: 1,
+      explain: '先全部登记，再由动态工具中间件按登录状态挑出这一次给模型的子集。',
+    },
+  ],
 }

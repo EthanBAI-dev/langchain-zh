@@ -151,8 +151,8 @@
 .tl.ok { color: #6EE7B7; }
 .tl.out { color: #FDA4AF; }
 .tl.ai { margin-top: 10px; padding: 10px 12px; border-radius: 10px; color: #fff; background: rgba(99, 102, 241, .14); border: 1px solid rgba(129, 140, 248, .3); }
-.caret { display: inline-block; width: 8px; height: 1.1em; margin-left: 2px; vertical-align: -3px; background: #F5F3FA; animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
+.term .term-caret { display: inline-block; width: 8px; height: 1.1em; margin-left: 2px; vertical-align: -3px; background: #F5F3FA; animation: term-blink 1s steps(1) infinite; }
+@keyframes term-blink { 50% { opacity: 0; } }
 @keyframes tl-in { from { opacity: 0; transform: translateY(4px); } }
 .bounce { display: inline-flex; gap: 5px; padding: 6px 0; }
 .bounce i { width: 7px; height: 7px; border-radius: 50%; background: #818CF8; animation: bounce 1s infinite; }

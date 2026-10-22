@@ -61,10 +61,10 @@ onBeforeUnmount(stop)
     <div class="term-bar"><span class="lights"><i /><i /><i /></span><span class="term-title">{{ title }}</span></div>
     <div class="term-body">
       <div v-for="(l, i) in shown" :key="i" :class="['tl', l.kind]">
-        <span v-if="l.kind === 'cmd'" class="ps">$</span>{{ l.text }}<span v-if="typing && i === shown.length - 1" class="caret" />
+        <span v-if="l.kind === 'cmd'" class="ps">$</span>{{ l.text }}<span v-if="typing && i === shown.length - 1" class="term-caret" />
       </div>
       <div v-if="waiting" class="tl wait"><span class="bounce"><i /><i /><i /></span></div>
-      <div v-if="!shown.length && !waiting" class="tl cmd"><span class="ps">$</span><span class="caret" /></div>
+      <div v-if="!shown.length && !waiting" class="tl cmd"><span class="ps">$</span><span class="term-caret" /></div>
     </div>
   </div>
 </template>

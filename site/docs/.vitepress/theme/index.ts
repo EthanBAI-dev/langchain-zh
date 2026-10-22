@@ -7,12 +7,14 @@ import ReactSim from './components/ReactSim.vue'
 import ReducerLab from './components/ReducerLab.vue'
 import Quiz from './components/Quiz.vue'
 import HomePage from './components/HomePage.vue'
+import RoadmapGraph from './components/RoadmapGraph.vue'
 import Icon from './components/Icon.vue'
 import { tokenize } from '../tokenize'
 // Inter 打包进站点，不依赖 Google Fonts（国内访问更稳）
 import '@fontsource-variable/inter/wght.css'
 import './custom.css'
 import './home.css'
+import './roadmap.css'
 
 export default {
   extends: DefaultTheme,
@@ -30,6 +32,7 @@ export default {
     app.component('ReducerLab', ReducerLab)
     app.component('Quiz', Quiz)
     app.component('HomePage', HomePage)
+    app.component('RoadmapGraph', RoadmapGraph)
     app.component('Icon', Icon)
   },
 } satisfies Theme

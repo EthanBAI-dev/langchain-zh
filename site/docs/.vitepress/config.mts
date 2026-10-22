@@ -34,6 +34,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.svg',
     nav: [
+      { text: '路线图', link: '/roadmap' },
       { text: '开始学习', link: '/learn/' },
       { text: '互动实验室', items: [
         { text: 'ReAct 循环模拟器', link: '/lab/react' },

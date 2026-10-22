@@ -28,7 +28,7 @@ const scenarios: Record<string, { name: string; tools: string; steps: Step[] }> 
     ],
   },
   calc: {
-    name: '乘法 Agent（第 4 章）',
+    name: '乘法 Agent（第 6 章）',
     tools: '`multiply(a, b)`',
     steps: [
       { node: 'start', note: '用户问一个需要工具的问题。',

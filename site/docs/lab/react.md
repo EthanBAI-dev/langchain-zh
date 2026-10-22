@@ -17,8 +17,8 @@ Agent 不是一次性给出答案，而是在 **model** 和 **tools** 两个节�
 
 ::: details 参考答案
 1. 一定是带 `tool_calls` 的 `AIMessage`，这正是 `tools_condition` 的判断依据。
-2. 会在 `tools` 之后直接结束，用户只能看到工具的原始结果（比如数字 6），这就是第 4 章里的 **Router**。
+2. 会在 `tools` 之后直接结束，用户只能看到工具的原始结果（比如数字 6），这就是第 6 章里的 **Router**。
 3. 没有。模型只输出“想调用什么工具、传什么参数”，真正执行的是框架里的工具节点。
 :::
 
-相关章节：[第 1 章 十分钟造一个 Agent](/learn/ch01) · [第 4 章 LangGraph 图的基本功](/learn/ch04)
+相关章节：[第 1 章 十分钟造一个 Agent](/learn/ch01) · [第 6 章 LangGraph 图的基本功](/learn/ch06)

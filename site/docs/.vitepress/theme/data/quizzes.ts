@@ -120,6 +120,58 @@ export const quizzes: Record<string, Question[]> = {
   ],
   ch04: [
     {
+      q: '想让 Agent 看一张 PNG 图片，消息该怎么写？',
+      options: ['把图片路径写进文字里', '`content` 写成内容块列表，加一个 `{"type": "image", "base64": ..., "mime_type": "image/png"}`', '用 `ToolMessage` 发图片', '必须先把图片转成文字'],
+      answer: 1,
+      explain: '按 LangChain 的标准块写，集成包会翻译成各家的格式，比如 OpenAI 的 `image_url`。',
+    },
+    {
+      q: '用户 ID 这种"调用时就知道、对话中不会变"的信息，适合放在哪？',
+      options: ['自定义状态', '运行时上下文（`context_schema`）', '系统提示词里写死', '让模型记住'],
+      answer: 1,
+      explain: '上下文由你在 `invoke` 时递进来，工具里用 `runtime.context` 读，一次调用里只读。',
+    },
+    {
+      q: '婚礼策划里，`update_state` 的说明为什么要求"必须单独调用"？',
+      options: ['为了省 token', '如果和专家工具同一轮并行执行，专家读状态时信息还没写进去', 'MCP 要求', '这是 Python 语法限制'],
+      answer: 1,
+      explain: '专家工具没有参数、全靠 `runtime.state` 读信息，所以必须先写完状态再派活。',
+    },
+    {
+      q: 'MCP 服务器上的工具函数自己抛了异常，客户端的重试拦截器会怎样？',
+      options: ['自动重试 3 次', '不会重试：服务器把错误包成正常结果返回，客户端看不到异常', '程序崩溃', '换一个服务器'],
+      answer: 1,
+      explain: '本地实测拦截器只执行了 1 次。重试只对连接断开、协议错误这类问题起作用。',
+    },
+  ],
+  ch05: [
+    {
+      q: '`SummarizationMiddleware(trigger=("tokens", 100), keep=("messages", 1))` 压缩后，旧消息的原文还在状态里吗？',
+      options: ['在，只是模型看不到', '不在了，被一条摘要消息替换', '存进了文件', '存进了 Store'],
+      answer: 1,
+      explain: '实测 9 条消息压缩后只剩 3 条：摘要、最后的问题、回答。和 Deep Agents 的"原文存文件"不同。',
+    },
+    {
+      q: '人在回路中选"拒绝"并附上理由后，会发生什么？',
+      options: ['对话结束', '模型收到理由，可以改完再调用一次，又会停下来等审批', '工具照样执行', '理由被忽略'],
+      answer: 1,
+      explain: '工具消息会写成"User rejected the tool call ... with reason: ..."，模型据此调整。',
+    },
+    {
+      q: '想让外部用户用不到数据库工具，最可靠的做法是？',
+      options: ['在提示词里说"不要用数据库"', '用 `@wrap_model_call` 把 `tools` 换成不含数据库的列表', '删掉数据库', '让模型自己判断'],
+      answer: 1,
+      explain: '模型看不到的工具就不可能调用。权限写在代码里，而不是求模型听话。',
+    },
+    {
+      q: '邮件助手的 `create_agent(tools=[...])` 为什么要把三个工具全列上？',
+      options: ['为了好看', '中间件只能从已登记的工具里挑，没登记的工具 Agent 不知道怎么执行', '模型需要先看到全部工具', '这样更快'],
+      answer: 1,
+      explain: '先全部登记，再由动态工具中间件按登录状态挑出这一次给模型的子集。',
+    },
+  ],
+  ch06: [
+    {
       q: 'LangGraph 的三个核心概念是？',
       options: ['模型、工具、提示词', '状态、节点、边', '线程、运行、助手', '链、路由、代理'],
       answer: 1,
@@ -150,7 +202,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '编译时会做结构检查，也可以在这里传入 checkpointer 等参数。',
     },
   ],
-  ch05: [
+  ch07: [
     {
       q: '两个并行节点同时写同一个字段，没有 reducer 会怎样？',
       options: ['后写的覆盖先写的', '报错', '自动合并成列表', '随机保留一个'],
@@ -182,7 +234,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '持久化检查点用 `SqliteSaver`（本地）或 `PostgresSaver`（生产）。',
     },
   ],
-  ch06: [
+  ch08: [
     {
       q: '想在执行工具 **之前** 停下来让人审批，编译时怎么写？',
       options: ['`compile(interrupt_after=["tools"])`', '`compile(interrupt_before=["tools"])`', '`compile(debug=True)`', '`compile(pause=True)`'],
@@ -219,7 +271,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '回放 = `stream(None, 旧config)`；分叉 = `update_state(旧config, ...)` 得到新 config 再运行。',
     },
   ],
-  ch07: [
+  ch09: [
     {
       q: '一个节点连出多条边时，下游节点会怎么执行？',
       options: ['按添加顺序依次执行', '在同一个超步里并行执行', '只执行第一个', '随机挑一个执行'],
@@ -245,7 +297,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '`Send` 是 Map-Reduce 的关键：动态生成任意数量的并行任务，每个带自己的状态。',
     },
   ],
-  ch08: [
+  ch10: [
     {
       q: '短期记忆和长期记忆分别靠什么实现？',
       options: ['都靠 checkpointer', '短期：checkpointer（按 thread）；长期：Store（跨 thread）', '短期：Store；长期：checkpointer', '都靠向量数据库'],
@@ -271,7 +323,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '把已有画像传给 Trustcall，它只生成需要修改的部分，而不是每次重写整个对象。',
     },
   ],
-  ch09: [
+  ch11: [
     {
       q: '告诉 LangGraph Server “图在哪里”的配置文件是？',
       options: ['`package.json`', '`langgraph.json`', '`.env`', '`pyproject.toml`'],
@@ -297,7 +349,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '`rollback` 回滚当前运行；`interrupt` 会保留已完成的进度；`enqueue` 排队；`reject` 拒绝新请求。',
     },
   ],
-  ch10: [
+  ch12: [
     {
       q: '普通 Agent 干长任务时容易出现哪些问题？',
       options: ['跑偏、上下文爆炸、上下文冲突', '速度太快', '不会调用工具', '只能用 OpenAI 模型'],
@@ -329,7 +381,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '`from deepagents import create_deep_agent`，可以传 `subagents`、`interrupt_on` 等参数。',
     },
   ],
-  ch11: [
+  ch13: [
     {
       q: '开启 LangSmith 追踪需要改多少代码？',
       options: ['要给每个函数加装饰器', '零代码改动：设置 `LANGSMITH_TRACING=true` 和 API Key', '要换成 LangSmith 专用的模型类', '要重写整个 Agent'],
@@ -355,7 +407,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '在线评估和 Insights 发现问题，回流到数据集，形成“观察 → 评估 → 改进”的闭环。',
     },
   ],
-  ch12: [
+  ch14: [
     {
       q: '从 deepagents 0.7 起，想让 Agent 用 `write_todos` 列任务清单，需要怎么做？',
       options: ['什么都不用做，默认就有', '给 `middleware` 加 `TodoListMiddleware()`', '在系统提示词里写"请列清单"', '换成 `create_agent`'],
@@ -381,7 +433,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '检查点 + `thread_id` 构成短期记忆，每个线程有自己独立的消息历史。',
     },
   ],
-  ch13: [
+  ch15: [
     {
       q: '不传 `backend` 时，Deep Agent 的文件存在哪里？',
       options: ['本地硬盘的当前目录', '当前线程的状态里（StateBackend）', 'LangSmith 云端', '系统临时目录'],
@@ -413,7 +465,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '发现靠描述，激活靠 `read_file`，没用到的技能正文从不进上下文。',
     },
   ],
-  ch14: [
+  ch16: [
     {
       q: '子智能体被调用时，能看到主 Agent 的对话历史吗（默认情况下）？',
       options: ['能，全部继承', '不能，只收到一条任务描述', '只能看到最后一条消息', '能看到但不能用'],
@@ -439,7 +491,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '工具在运行时才确定，所以让 `langgraph dev` 启动时调用工厂来建图。',
     },
   ],
-  ch15: [
+  ch17: [
     {
       q: '披萨店的 Bug 1 为什么模型自己发现不了？',
       options: ['模型太弱', '库存数字只出现在 `get_ingredient` 的子 run 里，从没回到模型的上下文', '系统提示词禁止它检查库存', '菠萝根本不在菜单上'],
@@ -465,7 +517,7 @@ export const quizzes: Record<string, Question[]> = {
       explain: '样本之间必须互不干扰，打分才可信。',
     },
   ],
-  ch16: [
+  ch18: [
     {
       q: '在线情绪评估器为什么要把 `OPENAI_API_KEY` 存成工作区密钥？',
       options: ['为了加密', '评估器在 LangSmith 自己的服务器上调模型，读不到你本机的 `.env`', '为了省钱', 'Prompt Hub 需要'],
@@ -489,58 +541,6 @@ export const quizzes: Record<string, Question[]> = {
       options: ['把 API Key 写进前端', '`create_presigned_feedback_token` 生成的预签名链接', '让用户自己登录 LangSmith', '在线评估器'],
       answer: 1,
       explain: '预签名链接不需要密钥，还可以配合预生成的 `run_id` 在 run 产生之前就生成。',
-    },
-  ],
-  ch17: [
-    {
-      q: '想让 Agent 看一张 PNG 图片，消息该怎么写？',
-      options: ['把图片路径写进文字里', '`content` 写成内容块列表，加一个 `{"type": "image", "base64": ..., "mime_type": "image/png"}`', '用 `ToolMessage` 发图片', '必须先把图片转成文字'],
-      answer: 1,
-      explain: '按 LangChain 的标准块写，集成包会翻译成各家的格式，比如 OpenAI 的 `image_url`。',
-    },
-    {
-      q: '用户 ID 这种"调用时就知道、对话中不会变"的信息，适合放在哪？',
-      options: ['自定义状态', '运行时上下文（`context_schema`）', '系统提示词里写死', '让模型记住'],
-      answer: 1,
-      explain: '上下文由你在 `invoke` 时递进来，工具里用 `runtime.context` 读，一次调用里只读。',
-    },
-    {
-      q: '婚礼策划里，`update_state` 的说明为什么要求"必须单独调用"？',
-      options: ['为了省 token', '如果和专家工具同一轮并行执行，专家读状态时信息还没写进去', 'MCP 要求', '这是 Python 语法限制'],
-      answer: 1,
-      explain: '专家工具没有参数、全靠 `runtime.state` 读信息，所以必须先写完状态再派活。',
-    },
-    {
-      q: 'MCP 服务器上的工具函数自己抛了异常，客户端的重试拦截器会怎样？',
-      options: ['自动重试 3 次', '不会重试：服务器把错误包成正常结果返回，客户端看不到异常', '程序崩溃', '换一个服务器'],
-      answer: 1,
-      explain: '本地实测拦截器只执行了 1 次。重试只对连接断开、协议错误这类问题起作用。',
-    },
-  ],
-  ch18: [
-    {
-      q: '`SummarizationMiddleware(trigger=("tokens", 100), keep=("messages", 1))` 压缩后，旧消息的原文还在状态里吗？',
-      options: ['在，只是模型看不到', '不在了，被一条摘要消息替换', '存进了文件', '存进了 Store'],
-      answer: 1,
-      explain: '实测 9 条消息压缩后只剩 3 条：摘要、最后的问题、回答。和 Deep Agents 的"原文存文件"不同。',
-    },
-    {
-      q: '人在回路中选"拒绝"并附上理由后，会发生什么？',
-      options: ['对话结束', '模型收到理由，可以改完再调用一次，又会停下来等审批', '工具照样执行', '理由被忽略'],
-      answer: 1,
-      explain: '工具消息会写成"User rejected the tool call ... with reason: ..."，模型据此调整。',
-    },
-    {
-      q: '想让外部用户用不到数据库工具，最可靠的做法是？',
-      options: ['在提示词里说"不要用数据库"', '用 `@wrap_model_call` 把 `tools` 换成不含数据库的列表', '删掉数据库', '让模型自己判断'],
-      answer: 1,
-      explain: '模型看不到的工具就不可能调用。权限写在代码里，而不是求模型听话。',
-    },
-    {
-      q: '邮件助手的 `create_agent(tools=[...])` 为什么要把三个工具全列上？',
-      options: ['为了好看', '中间件只能从已登记的工具里挑，没登记的工具 Agent 不知道怎么执行', '模型需要先看到全部工具', '这样更快'],
-      answer: 1,
-      explain: '先全部登记，再由动态工具中间件按登录状态挑出这一次给模型的子集。',
     },
   ],
 }

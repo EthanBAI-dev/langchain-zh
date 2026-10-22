@@ -59,9 +59,9 @@ watch([loopIn, reduced], ([v, r]) => {
 })
 
 const labs = [
-  { link: '/lab/react', icon: 'refresh-cw', title: 'ReAct 循环模拟器', desc: '一步一步看 Agent 在模型和工具之间来回，消息列表怎么变长。', from: '#F97316', to: '#EC4899' },
-  { link: '/lab/reducer', icon: 'git-fork', title: 'Reducer 实验台', desc: '亲手试 operator.add 和 add_messages：新值是覆盖、追加还是替换。', from: '#8B5CF6', to: '#6366F1' },
-  { link: '/lab/flashcards', icon: 'layers', title: '术语记忆卡片', desc: `${glossary.length} 个核心术语，正面中英文，翻面看解释，记住的自动移走。`, from: '#14B8A6', to: '#0EA5E9' },
+  { link: '/lab/react', icon: 'refresh-cw', title: 'ReAct 循环模拟器', desc: '一步一步看 Agent 在模型和工具之间来回，消息列表怎么变长。', from: '#4F46E5', to: '#0EA5E9' },
+  { link: '/lab/reducer', icon: 'git-fork', title: 'Reducer 实验台', desc: '亲手试 operator.add 和 add_messages：新值是覆盖、追加还是替换。', from: '#4F46E5', to: '#0EA5E9' },
+  { link: '/lab/flashcards', icon: 'layers', title: '术语记忆卡片', desc: `${glossary.length} 个核心术语，正面中英文，翻面看解释，记住的自动移走。`, from: '#4F46E5', to: '#0EA5E9' },
 ]
 </script>
 
@@ -99,7 +99,7 @@ const labs = [
     <!-- 路线图 -->
     <section class="sx wrap">
       <div class="sx-text">
-        <h2><span class="sx-ic" style="--a:#F97316;--b:#EC4899"><Icon name="map" :size="20" /></span>学习路线图</h2>
+        <h2><span class="sx-ic" style="--a:#4F46E5;--b:#0EA5E9"><Icon name="map" :size="20" /></span>学习路线图</h2>
         <p class="sub">二十章的先后关系画成一张图。点开任意一章，右边列出这一章讲什么、先学哪几章，学完打个勾。</p>
         <ul class="pts">
           <li><Icon name="git-fork" :size="16" />连线就是依赖，先学什么一目了然</li>
@@ -114,7 +114,7 @@ const labs = [
     <!-- ReAct 循环 -->
     <section class="sx wrap flip">
       <div class="sx-text">
-        <h2><span class="sx-ic" style="--a:#8B5CF6;--b:#6366F1"><Icon name="refresh-cw" :size="20" /></span>看懂 Agent 的循环</h2>
+        <h2><span class="sx-ic" style="--a:#4F46E5;--b:#0EA5E9"><Icon name="refresh-cw" :size="20" /></span>看懂 Agent 的循环</h2>
         <p class="sub">Agent 的全部秘密，就是模型和工具之间的一个循环。教程里每个关键机制都画成了这样的动图。</p>
         <ul class="pts">
           <li><Icon name="brain" :size="16" />模型决定要不要调工具、调哪个</li>
@@ -129,7 +129,7 @@ const labs = [
     <!-- Agent 终端 -->
     <section class="sx wrap">
       <div class="sx-text">
-        <h2><span class="sx-ic" style="--a:#EC4899;--b:#F43F5E"><Icon name="terminal" :size="20" /></span>十几行代码，一个会查数据库的 Agent</h2>
+        <h2><span class="sx-ic" style="--a:#4F46E5;--b:#0EA5E9"><Icon name="terminal" :size="20" /></span>十几行代码，一个会查数据库的 Agent</h2>
         <p class="sub">第一个实战就造一个 SQL 助手：你用中文提问，它自己看表结构、写查询、读结果，再回答你。</p>
         <ul class="pts">
           <li><Icon name="bot" :size="16" />create_agent：模型 + 工具 + 提示词</li>
@@ -144,7 +144,7 @@ const labs = [
     <!-- 练手程序 -->
     <section class="sx wrap flip">
       <div class="sx-text">
-        <h2><span class="sx-ic" style="--a:#14B8A6;--b:#0EA5E9"><Icon name="notebook-pen" :size="20" /></span>配套练手题，离线自动判分</h2>
+        <h2><span class="sx-ic" style="--a:#4F46E5;--b:#0EA5E9"><Icon name="notebook-pen" :size="20" /></span>配套练手题，离线自动判分</h2>
         <p class="sub">每章读完补几行 TODO，一条命令就知道哪里对、哪里错。用假模型检查，不需要 API Key。</p>
         <ul class="pts">
           <li><Icon name="file-code" :size="16" />起始代码、自动检查、参考答案三件套</li>
@@ -158,7 +158,7 @@ const labs = [
 
     <!-- 互动实验室 -->
     <section class="lx wrap">
-      <h2><span class="sx-ic" style="--a:#F97316;--b:#8B5CF6"><Icon name="flask-conical" :size="20" /></span>互动实验室</h2>
+      <h2><span class="sx-ic" style="--a:#4F46E5;--b:#0EA5E9"><Icon name="flask-conical" :size="20" /></span>互动实验室</h2>
       <p class="sub">最难懂的几个机制，做成了可以一步一步点的小实验。</p>
       <div class="labs">
         <a v-for="l in labs" :key="l.link" class="lab" :href="withBase(l.link)" :style="{ '--a': l.from, '--b': l.to }">
@@ -174,7 +174,7 @@ const labs = [
     <section class="wrap">
       <div class="endx">
         <i class="orb o1" aria-hidden="true" /><i class="orb o2" aria-hidden="true" />
-        <span class="sx-ic big" style="--a:#F97316;--b:#8B5CF6"><Icon name="rocket" :size="24" /></span>
+        <span class="sx-ic big" style="--a:#4F46E5;--b:#0EA5E9"><Icon name="rocket" :size="24" /></span>
         <h2>开始你的 Agent 学习之旅</h2>
         <p class="sub">零基础就从环境准备开始；已经用过 LangChain，直接打开路线图挑一章。</p>
         <div class="hx-cta">

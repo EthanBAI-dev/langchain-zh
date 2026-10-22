@@ -1,24 +1,24 @@
 /* =====================================================================
-   设计语言：白底 + 浅色卡片 + 深墨色主按钮；品牌色是暖色渐变（橙 → 粉 → 紫），
-   正文强调用紫色。--blue 这个名字沿用旧组件，值已经换成品牌紫
+   设计语言：白底 + 浅色卡片 + 深墨色主按钮；主色靛蓝，辅色天蓝，只用这两种颜色；
+   成功用绿色、出错用红色这类语义色不算。--blue 这个名字沿用旧组件，值是主色靛蓝
    图标全部是内联 SVG（Lucide 线性图标），不用 emoji
    ===================================================================== */
 :root {
   --bg: #FFFFFF;
   --card: #FFFFFF;
-  --ink: #17131F;
+  --ink: #141821;
   --muted: #575A61;
   --faint: #8C9099;
-  --line: #E8E6EE;
-  --line-strong: #D4D1DC;
-  --fill: #F4F3F7;
-  --subtle: #FAF9FC;
-  --action: #1C1724;
+  --line: #E6E8EE;
+  --line-strong: #D2D6DE;
+  --fill: #F3F4F7;
+  --subtle: #F9FAFC;
+  --action: #161A23;
   --action-hover: #0F0B16;
   --action-text: #FFFFFF;
-  --blue: #7C3AED;
-  --blue-tint: #F3EEFF;
-  --blue-ink: #5B21B6;
+  --blue: #4F46E5;
+  --blue-tint: #EEF0FF;
+  --blue-ink: #3730A3;
   --ok: #059669;
   --ok-tint: #ECFDF5;
   --warn: #B45309;
@@ -32,9 +32,9 @@
   --shadow: 0 1px 3px rgba(17, 20, 26, .04);
   --shadow-lg: 0 24px 60px -24px rgba(17, 20, 26, .22), 0 2px 6px rgba(17, 20, 26, .04);
   --radius: 12px;
-  --g1: #F97316;
-  --g2: #EC4899;
-  --g3: #8B5CF6;
+  --g1: #4F46E5;
+  --g2: #3B82F6;
+  --g3: #0EA5E9;
   --grad: linear-gradient(90deg, var(--g1), var(--g2) 50%, var(--g3));
 
   /* 兼容旧组件里用到的名字 */
@@ -57,14 +57,14 @@
   --vp-c-border: var(--line-strong);
   --vp-c-default-soft: var(--fill);
   --vp-c-brand-1: var(--blue);
-  --vp-c-brand-2: #6D28D9;
+  --vp-c-brand-2: #4338CA;
   --vp-c-brand-3: var(--action);
   --vp-c-brand-soft: var(--blue-tint);
   --vp-c-tip-1: var(--blue);
   --vp-c-tip-soft: var(--blue-tint);
   --vp-code-block-bg: var(--card);
   --vp-code-bg: var(--fill);
-  --vp-code-color: #BE185D;
+  --vp-code-color: #4338CA;
   --vp-code-line-highlight-color: var(--blue-tint);
   --vp-nav-bg-color: rgba(255, 255, 255, .78);
   --vp-sidebar-bg-color: var(--bg);
@@ -77,21 +77,21 @@
 }
 
 .dark {
-  --bg: #13111A;
-  --card: #1B1824;
+  --bg: #111318;
+  --card: #181B22;
   --ink: #ECEEF2;
   --muted: #A3A8B3;
   --faint: #6F7682;
-  --line: #2B2737;
-  --line-strong: #3A3548;
-  --fill: #221E2C;
-  --subtle: #171420;
+  --line: #262A33;
+  --line-strong: #343945;
+  --fill: #1E222A;
+  --subtle: #14161C;
   --action: #ECEEF2;
   --action-hover: #FFFFFF;
   --action-text: #11141A;
-  --blue: #B197FC;
-  --blue-tint: rgba(177, 151, 252, .13);
-  --blue-ink: #D0BFFF;
+  --blue: #A5B4FC;
+  --blue-tint: rgba(165, 180, 252, .13);
+  --blue-ink: #C7D2FE;
   --ok: #34D399;
   --ok-tint: rgba(52, 211, 153, .12);
   --warn: #FBBF24;
@@ -105,9 +105,12 @@
   --human: #F472B6;
   --shadow: 0 1px 3px rgba(0, 0, 0, .3);
   --shadow-lg: 0 24px 60px -24px rgba(0, 0, 0, .7), 0 2px 6px rgba(0, 0, 0, .3);
-  --vp-c-brand-2: #C4B5FD;
-  --vp-code-color: #F9A8D4;
-  --vp-nav-bg-color: rgba(19, 17, 26, .78);
+  --vp-c-brand-2: #C7D2FE;
+  --g1: #818CF8;
+  --g2: #60A5FA;
+  --g3: #38BDF8;
+  --vp-code-color: #A5B4FC;
+  --vp-nav-bg-color: rgba(17, 19, 24, .78);
 }
 
 body { -webkit-font-smoothing: antialiased; }
@@ -449,12 +452,12 @@ body { -webkit-font-smoothing: antialiased; }
 
 /* ---------- 正文的一点颜色 ---------- */
 .VPSidebar .group { --dot: #64748B; }
-.VPSidebar .group:nth-child(4) { --dot: #F97316; }
-.VPSidebar .group:nth-child(5) { --dot: #8B5CF6; }
-.VPSidebar .group:nth-child(6) { --dot: #0D9488; }
-.VPSidebar .group:nth-child(7) { --dot: #EC4899; }
-.VPSidebar .group:nth-child(8) { --dot: #6366F1; }
-.VPSidebar .group:nth-child(9) { --dot: #059669; }
+.VPSidebar .group:nth-child(4) { --dot: #4F46E5; }
+.VPSidebar .group:nth-child(5) { --dot: #0EA5E9; }
+.VPSidebar .group:nth-child(6) { --dot: #4F46E5; }
+.VPSidebar .group:nth-child(7) { --dot: #0EA5E9; }
+.VPSidebar .group:nth-child(8) { --dot: #4F46E5; }
+.VPSidebar .group:nth-child(9) { --dot: #0EA5E9; }
 .VPSidebarItem.level-0.collapsible > .item .text::before {
   content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 3px; margin-right: 8px; background: var(--dot); vertical-align: 1px;
 }

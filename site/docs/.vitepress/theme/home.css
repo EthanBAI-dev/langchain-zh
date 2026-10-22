@@ -76,7 +76,7 @@
 .stage-svg .pill-node.end rect:first-child { fill: var(--card); stroke: var(--line-strong); stroke-width: 1.5; }
 .stage-svg .pill-node.end text { fill: var(--ink); }
 .stage-svg .node .box { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
-.stage-svg .hl-ring { fill: none; stroke: var(--blue); stroke-width: 2.5; }
+.stage-svg .hl-ring, .stage-svg .pill-node .hl-ring { fill: none; stroke: var(--blue); stroke-width: 2.5; }
 .stage-svg .glow { fill: var(--blue); }
 .stage-svg .node .tile { fill: var(--blue-tint); }
 .stage-svg .node.tool .tile { fill: var(--amber-tint); }

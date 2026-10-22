@@ -78,7 +78,7 @@ const steps = [
         <rect class="tile" x="68" y="118" width="40" height="40" rx="10" />
         <g transform="translate(76 126)" class="ic"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2M20 14h2M15 13v2M9 13v2" /></g>
         <text x="122" y="134" class="t">模型 model</text>
-        <text x="122" y="156" class="s">决定：直接回答，还是调工具</text>
+        <text x="122" y="156" class="s" textLength="152" lengthAdjust="spacingAndGlyphs">决定：直接回答还是调工具</text>
       </g>
       <g class="node tool">
         <rect class="box" x="50" y="252" width="240" height="76" rx="16" />

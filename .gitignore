@@ -1,4 +1,9 @@
 node_modules/
+.venv/
+.env
+**/.env
+.pytest_cache/
+**/__pycache__/
 content/assets/_figure-src/out/
 content/assets/_figure-src/frames/
 content/assets/_figure-src/.page.html

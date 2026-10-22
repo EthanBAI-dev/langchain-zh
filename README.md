@@ -65,7 +65,7 @@
 
 | 章 | 标题 | 你将学会 |
 |---|---|---|
-| 0 | [环境准备](content/00-环境准备.md) | 装好 Python、uv、API Key、LangSmith 和 Studio |
+| 0 | [环境准备](content/00-环境准备.md) | 理解开发环境，手动或用 AI 配好 VS Code 并跑通离线练习 |
 | 1 | [十分钟造一个 Agent](content/01-十分钟造一个Agent.md) | 用 `create_agent` 做一个会查数据库的 SQL 智能体 |
 | 2 | [Agent 的积木](content/02-Agent的积木.md) | 消息、流式输出、工具描述、MCP |
 | 3 | [记忆、结构化输出与中间件](content/03-记忆结构化输出与中间件.md) | 记住对话、输出 JSON、动态提示词、人工审批 |

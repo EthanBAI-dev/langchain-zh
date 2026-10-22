@@ -57,7 +57,7 @@ Academy 上的课程会持续更新，下面是撰写本教程时（2026 年 10 
 
 | 章节 | 你将学会 | 关键 API |
 |---|---|---|
-| [第 0 章 环境准备](00-环境准备.md) | 装好 Python、uv、API Key、LangSmith、Studio | `uv sync`、`.env`、`langgraph dev` |
+| [第 0 章 环境准备](00-环境准备.md) | 理解开发环境，手动或用 AI 跑通第一条离线练习 | Python、`.venv`、AI 辅助部署、pytest |
 | [第 1 章 十分钟造一个 Agent](01-十分钟造一个Agent.md) | 用 `create_agent` 做一个会查数据库的 SQL 智能体 | `create_agent`、`@tool`、`context_schema` |
 | [第 2 章 Agent 的积木](02-Agent的积木.md) | 消息、流式输出、工具描述、MCP | `HumanMessage`、`stream_mode`、`MultiServerMCPClient` |
 | [第 3 章 记忆、结构化输出与中间件](03-记忆结构化输出与中间件.md) | 让 Agent 记住对话、输出 JSON、动态提示词、人工审批 | `InMemorySaver`、`response_format`、`@dynamic_prompt`、`HumanInTheLoopMiddleware` |

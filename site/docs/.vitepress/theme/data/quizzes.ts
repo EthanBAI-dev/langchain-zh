@@ -10,22 +10,28 @@ export interface Question {
 export const quizzes: Record<string, Question[]> = {
   ch00: [
     {
-      q: '课程要求的 Python 版本是？',
-      options: ['3.8 及以上', '3.10 及以上', '3.11 – 3.13', '只能用 3.13'],
-      answer: 2,
-      explain: '课程明确要求 Python ≥ 3.11，教程推荐 3.11 – 3.13。',
-    },
-    {
-      q: '新课程统一用哪个工具管理 Python 环境和依赖？',
-      options: ['conda', 'uv', 'poetry', 'pipenv'],
+      q: '这门教程为什么统一推荐 Python 3.12？',
+      options: ['它是唯一能运行 Python 的版本', '它处在当前几套课程要求的兼容范围内', '它不需要安装依赖', '它自带 LangChain'],
       answer: 1,
-      explain: '新课程用 `uv sync` 一步创建 `.venv` 并安装依赖，比 pip + venv 快得多。',
+      explain: '不同官方课程的版本范围略有差异，Python 3.12 位于它们当前要求的交集内，兼容性更稳。',
     },
     {
-      q: '想在浏览器里可视化调试图（Studio），应该运行哪个命令？',
-      options: ['`jupyter lab`', '`uv run studio`', '`langgraph dev`', '`langsmith start`'],
+      q: '项目中的 `.venv` 主要用来做什么？',
+      options: ['保存教程正文', '隔离当前项目的 Python 和工具包', '保存 API Key', '上传代码到 GitHub'],
+      answer: 1,
+      explain: '`.venv` 是项目自己的工具箱，用来隔离 Python 和依赖；保存 API Key 的通常是 `.env`。',
+    },
+    {
+      q: '`langgraph dev` 提示找不到 `langgraph.json`，最可能是什么原因？',
+      options: ['Python 一定损坏了', 'API Key 已经过期', '当前目录不是含有该配置文件的 LangGraph 项目', '必须先启动 Jupyter'],
       answer: 2,
-      explain: '`langgraph dev` 会启动本地服务器，然后可以在浏览器里打开 LangSmith Studio。',
+      explain: '`langgraph dev` 默认从当前目录寻找 `langgraph.json`；找不到配置文件不代表整个 Python 环境损坏。',
+    },
+    {
+      q: '让编程 Agent 辅助配置环境后，怎样判断它真的完成了？',
+      options: ['它回复“已完成”就可以', '只检查 `.venv` 文件夹是否存在', '确认两套参考答案测试和网站构建都实际通过', '让它申请一个 API Key'],
+      answer: 2,
+      explain: 'AI 的文字承诺不是验收结果；测试和构建真实通过，才说明环境可以复现地运行。',
     },
   ],
   ch01: [

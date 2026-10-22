@@ -23,7 +23,7 @@
 
 课程总结：这些正是 Claude Code、Manus、Deep Research 等"深度"Agent 共同的上下文工程（context engineering）模式。
 
-![Deep Agent 架构](assets/figures/deep_agent_arch.png)
+![Deep Agent 架构](assets/figures/deep_agent_arch.svg)
 
 ## 12.2 预备知识：让工具读写图的状态
 

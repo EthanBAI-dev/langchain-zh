@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Icon from './Icon.vue'
 import { computed, ref, watch } from 'vue'
 import glossary from '../data/glossary.json'
 import { progress } from '../progress'
@@ -52,7 +53,7 @@ function clearCards() { progress.cards = {} }
         <button :class="{ on: filter === 'all' }" @click="filter = 'all'">全部 {{ glossary.length }}</button>
       </div>
       <span class="muted">已掌握 {{ mastered }} / {{ glossary.length }}</span>
-      <button class="btn ghost" @click="shuffle">🔀 洗牌</button>
+      <button class="btn ghost" @click="shuffle"><Icon name="shuffle" :size="15" />洗牌</button>
     </div>
 
     <div v-if="card" class="card-wrap" @click="flipped = !flipped">
@@ -71,7 +72,7 @@ function clearCards() { progress.cards = {} }
       </div>
     </div>
     <div v-else class="card-empty">
-      🎉 全部 {{ glossary.length }} 个术语都掌握了！
+      <Icon name="party-popper" :size="28" /> 全部 {{ glossary.length }} 个术语都掌握了！
       <button class="btn" @click="filter = 'all'">再复习一遍</button>
       <button class="btn ghost" @click="clearCards">清空记录</button>
     </div>
@@ -83,7 +84,7 @@ function clearCards() { progress.cards = {} }
     </div>
     <div v-if="card" class="cards-ctrl">
       <button class="btn" @click="know(false)">还不熟</button>
-      <button class="btn primary" @click="know(true)">我记住了 ✓</button>
+      <button class="btn primary" @click="know(true)"><Icon name="check" :size="15" :stroke="2.6" />我记住了</button>
     </div>
   </div>
 </template>

@@ -22,7 +22,7 @@ LangSmith 在 Academy 上有两门课，内容有重叠，但案例不一样：
 
 两门课的主线是同一个循环：**追踪看清 → 评估量化 → 改进 → 上线监控 → 发现新问题**。这一章走前半圈。
 
-![两门课的主线](assets/figures/langsmith_loop.png)
+![两门课的主线](assets/figures/langsmith_loop.svg)
 
 ## 17.2 案例：LangSlice 披萨店的 Sal
 
@@ -72,7 +72,7 @@ uv run run_agent.py -m "how late are you open on friday?"
 
 **一条 trace = 一次完整的请求**；它是一棵树，树上每个节点叫一个 **run**（也叫 span）。把代码接上追踪，有四种办法，从"零改动"到"全手动"：
 
-![run 树](assets/figures/run_tree.png)
+![run 树](assets/figures/run_tree.svg)
 
 | 接法 | 适合 | 要做什么 |
 |---|---|---|

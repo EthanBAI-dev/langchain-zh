@@ -3,3 +3,4 @@ docs/learn/
 docs/.vitepress/cache/
 docs/.vitepress/dist/
 docs/.vitepress/theme/data/glossary.json
+docs/.vitepress/theme/data/outline.json

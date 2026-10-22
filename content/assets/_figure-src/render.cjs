@@ -1,6 +1,7 @@
 // Usage: npm install && node render.cjs [name ...]   (outputs to ./out)
 // Static specs -> PNG @2x; specs with frames -> GIF with eased transitions between keyframes.
 const { chromium } = require('playwright');
+const { optimize } = require('svgo');
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
@@ -8,7 +9,7 @@ const { execFileSync } = require('child_process');
 const DIR = __dirname;
 const FONT = 'node_modules/@fontsource/noto-sans-sc';
 const ICON_DIR = path.join(DIR, 'node_modules/lucide-static/icons');
-const GIF_SCALE = 1.5;
+const GIF_SCALE = Number(process.env.GIF_SCALE || 2);
 const STEP_MS = 40;
 
 const CSS = `
@@ -106,9 +107,34 @@ function iconMap() {
       seq.push([file, dur]);
     };
     if (!animated) {
-      await shot(0, 1, 0);
-      fs.copyFileSync(seq[0][0], path.join(DIR, 'out', name + '.png'));
-      console.log('png', name);
+      // 静态图 → 矢量 SVG：先让 Chromium 打印成 PDF（文字和线条都是矢量），再用 pdftocairo 转成 SVG。
+      // 文字会变成字形路径，所以 SVG 不依赖任何字体，在 GitHub 和网站上放大都清晰。
+      await page.evaluate(() => window.renderFrame(0, 1));
+      const { w, h } = await page.evaluate(() => {
+        const svg = document.querySelector('#root svg');
+        document.body.style.background = '#F8FAFC';
+        // 模糊阴影在 PDF 里只能变成位图，体积大又发虚；矢量版换成一道很淡的实色投影
+        for (const el of svg.querySelectorAll('[filter]')) {
+          const f = el.getAttribute('filter'); el.removeAttribute('filter');
+          if (!/card|lift/.test(f) || el.tagName !== 'rect') continue;
+          const sh = el.cloneNode(); sh.removeAttribute('stroke');
+          sh.setAttribute('fill', '#0F172A'); sh.setAttribute('fill-opacity', '0.05'); sh.setAttribute('transform', 'translate(0,3)');
+          el.parentNode.insertBefore(sh, el);
+        }
+        return { w: +svg.getAttribute('width'), h: +svg.getAttribute('height') };
+      });
+      await page.addStyleTag({ content: `@page{size:${w}px ${h}px;margin:0}html,body{width:${w}px;height:${h}px;overflow:hidden}#root svg{display:block}.panel,.cap{box-shadow:none!important}` });
+      const pdf = path.join(fdir, name + '.pdf');
+      await page.pdf({ path: pdf, width: w + 'px', height: h + 'px', printBackground: true, pageRanges: '1' });
+      const svgOut = path.join(DIR, 'out', name + '.svg');
+      execFileSync('pdftocairo', ['-svg', pdf, svgOut]);
+      // pdftocairo 以 pt 为单位输出（1px = 0.75pt），这里把宽高改回 CSS 像素，方便 <img> 按原尺寸显示
+      let svg = fs.readFileSync(svgOut, 'utf8');
+      svg = svg.replace(/<svg([^>]*?)width="[^"]*"([^>]*?)height="[^"]*"/, `<svg$1width="${w}"$2height="${h}"`);
+      // 压缩路径坐标精度，体积约为原来的 1/4
+      svg = optimize(svg, { multipass: true, floatPrecision: 2, plugins: [{ name: 'preset-default', params: { overrides: { removeViewBox: false } } }] }).data;
+      fs.writeFileSync(svgOut, svg);
+      console.log('svg', name, (fs.statSync(svgOut).size / 1024).toFixed(0) + 'KB');
       await page.close();
       continue;
     }
@@ -127,7 +153,7 @@ function iconMap() {
     fs.writeFileSync(path.join(fdir, 'list.txt'), list);
     const out = path.join(DIR, 'out', name + '.gif');
     execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', path.join(fdir, 'list.txt'),
-      '-vf', 'split[a][b];[a]palettegen=max_colors=192:stats_mode=full:reserve_transparent=0[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle',
+      '-vf', 'split[a][b];[a]palettegen=max_colors=256:stats_mode=full:reserve_transparent=0[p];[b][p]paletteuse=dither=none:diff_mode=rectangle',
       '-loop', '0', out]);
     console.log('gif', name, seq.length, 'frames', (fs.statSync(out).size / 1024).toFixed(0) + 'KB');
   }

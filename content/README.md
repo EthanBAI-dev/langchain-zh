@@ -2,7 +2,7 @@
 
 > 本教程依据 [LangChain Academy](https://academy.langchain.com/) 的官方免费课程整理而成，用中文、配图和动图，带你从"会用一个 Agent"一路走到"能设计、调试、部署复杂的多智能体系统"。
 
-![LangChain 生态全景](assets/figures/ecosystem.png)
+![LangChain 生态全景](assets/figures/ecosystem.svg)
 
 ---
 
@@ -53,7 +53,7 @@ Academy 上的课程会持续更新，下面是撰写本教程时（2026 年 10 
 
 ## 四、学习路线
 
-![学习路线](assets/figures/roadmap.png)
+![学习路线](assets/figures/roadmap.svg)
 
 | 章节 | 你将学会 | 关键 API |
 |---|---|---|

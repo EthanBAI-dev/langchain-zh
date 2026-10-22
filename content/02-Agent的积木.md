@@ -13,7 +13,7 @@
 
 在 LangChain 里，模型的输入和输出都是**消息**。Agent 的状态核心就是一个消息列表 `messages`。
 
-![消息类型](assets/figures/messages.png)
+![消息类型](assets/figures/messages.svg)
 
 | 类型 | 谁产生的 | 典型内容 |
 |---|---|---|
@@ -134,7 +134,7 @@ for chunk in agent.stream(
 
 工具让 Agent 能"行动"。关键在于：**模型只能看到工具的名字、描述和参数结构**，看不到你的代码。
 
-![工具如何被模型理解](assets/figures/tool_schema.png)
+![工具如何被模型理解](assets/figures/tool_schema.svg)
 
 ### 基础写法
 
@@ -208,7 +208,7 @@ def real_number_calculator(
 
 **MCP（Model Context Protocol）** 是一个开放协议，让"工具提供方"和"AI 应用"用统一的方式对接。社区已经有大量现成的 MCP 服务器（时间、文件系统、GitHub、数据库、搜索……）。
 
-![MCP 架构](assets/figures/mcp.png)
+![MCP 架构](assets/figures/mcp.svg)
 
 用 `langchain-mcp-adapters` 连接：
 

@@ -23,7 +23,7 @@
 | 上下文压缩 | 对话太长时自动摘要、大结果自动存文件 | 第 15 章 |
 | 任务清单（可选） | `write_todos`，长任务不跑偏 | 第 16 章 |
 
-![Deep Agent 的套件](assets/figures/deep_harness.png)
+![Deep Agent 的套件](assets/figures/deep_harness.svg)
 
 图里最里面两层（**模型**和**系统提示词**）是你最常改的地方，所以本章从它们开始。
 

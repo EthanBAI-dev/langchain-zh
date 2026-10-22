@@ -19,7 +19,7 @@ Deep Agent 不是"悬在空中"运行的，它总待在一个**环境**里。这
 
 前两样由**后端（backend）**提供。后端回答三个问题：文件存在哪？有没有 `execute`？有的话命令在哪跑？解释器则不归后端管，它是单独加进 Agent 循环的一个工具。
 
-![环境与后端](assets/figures/da_environment.png)
+![环境与后端](assets/figures/da_environment.svg)
 
 记住这张图最重要的一点：**模型看到的工具名永远一样**。你把后端从"存在内存里"换成"存在硬盘上"，模型照样调 `read_file`，它根本不知道底下换了什么。
 

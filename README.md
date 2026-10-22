@@ -6,13 +6,12 @@
 
 **一套从零开始、讲人话、配满图的 LangChain / LangGraph / Deep Agents / LangSmith 中文教程**
 
-教程正文 · 互动学习网站 · 离线练手题 · 小红书 / 抖音图文，一个仓库全部打包
+教程正文 · 互动学习网站 · 离线练手题，一个仓库全部打包
 
 ### 🌐 在线学习站：[ethanbai-dev.github.io/langchain-zh](https://ethanbai-dev.github.io/langchain-zh/)
 
 [📖 直接读教程](content/README.md) ·
-[🧪 动手做练习](exercises/README.md) ·
-[📱 看图文卡片](social/README.md)
+[🧪 动手做练习](exercises/README.md)
 
 </div>
 
@@ -39,7 +38,7 @@
 | 用过老版 LangChain（LCEL、`create_react_agent`） | 先看第 1、3 章的 `create_agent` 和中间件，再看第 4–5 章 |
 | 想把 Agent 做成产品 | 重点看第 8、10、11 章（人在回路、长期记忆、部署）和第 17–18 章（LangSmith） |
 | 想做长任务 Agent | 第 6 章打底，再看第 12 章原理和第 14–16 章实战 |
-| 只想先有个大概印象 | 刷一刷 `social/` 里的 12 篇图文卡片，每篇 5 分钟 |
+| 只想先有个大概印象 | 打开学习站首页看两张全景图，再读第 0 章的总导读 |
 
 **前置知识**：会写 Python 函数和类、知道什么是 API Key 就够了，不需要机器学习背景。
 
@@ -53,9 +52,8 @@
 | [`site/`](site/README.md) | 🌐 **互动学习站**（VitePress）：把教程渲染成网站，加上测验、进度、实验室、中文搜索 | 打开 [在线地址](https://ethanbai-dev.github.io/langchain-zh/)，或在本地 `npm run dev` |
 | [`exercises/`](exercises/README.md) | 🧪 **LangChain 练手题**：12 章、42 道题，填 `TODO`，一条命令自动检查 | 配合教程第 0–3、6–13 章做 |
 | [`exercises-langgraph/`](exercises-langgraph/README.md) | 🧪 **LangGraph 练手题**：16 章、56 道题，最后一章是邮件助理综合项目 | 想把 LangGraph 练扎实时做 |
-| [`social/`](social/README.md) | 📱 **小红书 / 抖音图文**：12 篇、共 76 张卡片，难度比教程更低 | 入门预习、分享给朋友 |
 
-<p align="center"><img src="social/封面总览.png" width="720" alt="图文卡片封面总览"></p>
+<p align="center"><img src="content/assets/figures/ecosystem.svg" width="760" alt="LangChain 生态全景"></p>
 
 ---
 
@@ -144,10 +142,6 @@ pytest ch01_sql_agent        # 写完某一章后检查自己的答案
 ```
 
 跑完会打印一张中文成绩单，告诉你哪一题没过、为什么。详细说明见 [exercises/README.md](exercises/README.md)。
-
-### 📱 看图文卡片
-
-[`social/images/`](social/images) 里每篇都有两种尺寸：小红书 3:4 和抖音 9:16，标题和正文文案在 [social/文案.md](social/文案.md)。想改文字重新出图，看 [social/README.md](social/README.md)。
 
 ---
 

@@ -4,6 +4,7 @@ import { useData } from 'vitepress'
 import { computed, onMounted } from 'vue'
 import ChapterEnd from './components/ChapterEnd.vue'
 import ChapterBadge from './components/ChapterBadge.vue'
+import ImageZoom from './components/ImageZoom.vue'
 import { initProgress } from './progress'
 
 const { frontmatter } = useData()
@@ -18,6 +19,9 @@ onMounted(initProgress)
     </template>
     <template #doc-after>
       <ChapterEnd v-if="chapter" :key="chapter" :slug="chapter" />
+    </template>
+    <template #layout-bottom>
+      <ImageZoom />
     </template>
   </DefaultTheme.Layout>
 </template>

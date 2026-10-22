@@ -13,7 +13,7 @@
 
 第 3 章介绍过中间件：在 Agent 循环的关键位置"插钩子"。这一章用到的几种，按它插在哪里分：
 
-![Agent 循环里的中间件](assets/figures/dynamic_agent.png)
+![Agent 循环里的中间件](assets/figures/dynamic_agent.svg)
 
 | 中间件 | 什么时候运行 | 本章用它做什么 |
 |---|---|---|

@@ -117,7 +117,7 @@ agent = create_agent(
 )
 ```
 
-![create_agent 的配方](assets/figures/create_agent_anatomy.png)
+![create_agent 的配方](assets/figures/create_agent_anatomy.svg)
 
 `create_agent` 返回的是一张**编译好的 LangGraph 图**。你可以把它画出来：
 

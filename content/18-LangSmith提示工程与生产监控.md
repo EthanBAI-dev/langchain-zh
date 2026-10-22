@@ -396,7 +396,7 @@ if order["order_type"] == "delivery":
 
 Essentials 最后一课讲的是 **LangSmith Engine**，它把"看 trace → 找问题 → 修 → 加测试"这件事自动化。按官方文档：
 
-![LangSmith Engine](assets/figures/langsmith_engine.png)
+![LangSmith Engine](assets/figures/langsmith_engine.svg)
 
 | 项目 | 说明 |
 |---|---|

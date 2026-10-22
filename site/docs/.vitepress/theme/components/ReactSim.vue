@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Icon from './Icon.vue'
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { inline } from './inline'
 
@@ -121,10 +122,10 @@ const edgeOn = (e: string) => step.value.edge === e
     </div>
 
     <div class="sim-ctrl">
-      <button class="btn" :disabled="i === 0" @click="prev">← 上一步</button>
-      <button v-if="!playing" class="btn primary" @click="play">{{ last ? '↻ 重新播放' : '▶ 自动播放' }}</button>
-      <button v-else class="btn primary" @click="stop">⏸ 暂停</button>
-      <button class="btn" :disabled="last" @click="next">下一步 →</button>
+      <button class="btn" :disabled="i === 0" @click="prev">上一步</button>
+      <button v-if="!playing" class="btn primary" @click="play"><Icon :name="last ? 'refresh-cw' : 'play'" :size="14" />{{ last ? '重新播放' : '自动播放' }}</button>
+      <button v-else class="btn primary" @click="stop"><Icon name="pause" :size="14" />暂停</button>
+      <button class="btn" :disabled="last" @click="next">下一步<Icon name="arrow-right" :size="14" /></button>
       <button class="btn ghost" @click="reset">重置</button>
     </div>
   </div>

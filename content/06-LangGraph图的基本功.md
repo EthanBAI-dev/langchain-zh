@@ -97,7 +97,7 @@ graph TD;
 
 下面三步，每一步只比上一步多一点点，最后就得到 ReAct Agent。
 
-![从 Chain 到 Agent](assets/figures/graph_evolution.png)
+![从 Chain 到 Agent](assets/figures/graph_evolution.svg)
 
 ### 第 1 步 Chain：消息作为状态 + 绑定工具的模型
 

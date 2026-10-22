@@ -15,7 +15,7 @@
 
 Agent 是"黑盒"：一个问题进去，中间调用了几次模型、几次工具、每次输入输出是什么、哪一步慢、哪一步错，光看最终答案完全不知道。**LangSmith 就是 Agent 的"行车记录仪 + 质检中心"**。
 
-![LangSmith 循环](assets/figures/langsmith_loop.png)
+![LangSmith 循环](assets/figures/langsmith_loop.svg)
 
 根据 Academy 课程页，**LangSmith Essentials** 包含以下部分（官方估计 30 分钟以内学完）：
 

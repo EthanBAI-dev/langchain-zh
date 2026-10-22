@@ -282,7 +282,7 @@ uv run langgraph dev
 
 整个项目最想让你记住的一句话：**做一个 Deep Agent 只要很少的代码，它的行为大部分是"文字"决定的**。
 
-![Chinook 销售助理](assets/figures/sales_assistant.png)
+![Chinook 销售助理](assets/figures/sales_assistant.svg)
 
 ```text
 sales_assistant/

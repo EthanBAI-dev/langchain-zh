@@ -36,6 +36,12 @@ function guardMustache(md) {
   return md.replace(/^(?!\s*```)(.*\{\{.*)$/gm, '<span v-pre>$1</span>')
 }
 
+// 静态示意图已改成矢量 SVG；正文里如果还写着 .png（比如别的分支新加的引用），自动换成 .svg
+function preferSvg(md) {
+  return md.replace(/(assets\/figures\/[\w-]+)\.png/g, (all, base) =>
+    !fs.existsSync(path.join(src, base + '.png')) && fs.existsSync(path.join(src, base + '.svg')) ? base + '.svg' : all)
+}
+
 for (const [file, slug] of slugOf) {
   const p = path.join(src, file)
   if (!fs.existsSync(p)) {
@@ -44,6 +50,7 @@ for (const [file, slug] of slugOf) {
   }
   let md = fs.readFileSync(p, 'utf8')
   md = rewriteLinks(md, file)
+  md = preferSvg(md)
   md = guardMustache(md)
   const fm = slug === 'index' ? '---\ntitle: 总导读\n---\n\n' : `---\nchapter: ${slug}\n---\n\n`
   fs.writeFileSync(path.join(out, `${slug}.md`), fm + md)

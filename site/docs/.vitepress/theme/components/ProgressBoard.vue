@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Icon from './Icon.vue'
 import { computed } from 'vue'
 import { withBase } from 'vitepress'
 import chapters from '../../chapters.json'
@@ -24,9 +25,11 @@ function reset() {
 <template>
   <div :class="['board', { compact: props.compact }]">
     <div class="board-top">
-      <div class="ring" :style="{ '--p': pct }">
-        <span>{{ pct }}%</span>
-      </div>
+      <svg class="ring-svg sm" viewBox="0 0 132 132" aria-hidden="true">
+        <circle cx="66" cy="66" r="52" class="track" />
+        <circle cx="66" cy="66" r="52" class="bar" :stroke-dasharray="`${(2 * Math.PI * 52 * pct) / 100} 999`" transform="rotate(-90 66 66)" />
+        <text x="66" y="74" class="pct">{{ pct }}%</text>
+      </svg>
       <div class="board-stats">
         <div><strong>{{ doneCount }}</strong> / {{ chapters.length }} 章已完成</div>
         <div><strong>{{ quizBest }}</strong> / {{ quizTotal }} 道测验题答对</div>
@@ -34,14 +37,14 @@ function reset() {
         <div v-if="nextUp" class="muted">剩余约 {{ Math.ceil(minutesLeft / 6) / 10 }} 小时</div>
       </div>
       <a v-if="nextUp" class="btn primary board-cta" :href="withBase(`/learn/${nextUp.slug}`)">
-        {{ doneCount ? '继续学习' : '从这里开始' }}：{{ nextUp.slug === 'appendix' ? nextUp.title : `第 ${nextUp.num} 章 ${nextUp.title}` }} →
+        {{ doneCount ? '继续学习' : '从这里开始' }}：{{ nextUp.slug === 'appendix' ? nextUp.title : `第 ${nextUp.num} 章 ${nextUp.title}` }}<Icon name="arrow-right" :size="15" />
       </a>
-      <span v-else class="board-cta">🎓 全部学完了！</span>
+      <span v-else class="board-cta pill ok"><Icon name="graduation-cap" :size="16" />全部学完了！</span>
     </div>
 
     <ol v-if="!props.compact" class="board-list">
       <li v-for="c in chapters" :key="c.slug" :class="{ done: progress.done[c.slug] }">
-        <span class="dot">{{ progress.done[c.slug] ? '✓' : c.num }}</span>
+        <span class="dot"><Icon v-if="progress.done[c.slug]" name="check" :size="13" /><template v-else>{{ c.num }}</template></span>
         <a :href="withBase(`/learn/${c.slug}`)">{{ c.title }}</a>
         <span class="muted">{{ c.part }} · {{ c.minutes }} 分钟</span>
         <span v-if="progress.quiz[c.slug]" class="pill">测验 {{ progress.quiz[c.slug].best }}/{{ progress.quiz[c.slug].total }}</span>

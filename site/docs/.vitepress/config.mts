@@ -24,7 +24,9 @@ export default defineConfig({
   base: process.env.BASE || '/',
   cleanUrls: true,
   lastUpdated: true,
-  head: [['link', { rel: 'icon', href: `${process.env.BASE || '/'}logo.svg` }]],
+  head: [
+    ['link', { rel: 'icon', href: `${process.env.BASE || '/'}logo.svg` }],
+  ],
   markdown: {
     lineNumbers: false,
     image: { lazyLoading: true },
@@ -50,6 +52,7 @@ export default defineConfig({
         ] },
       ],
     },
+    socialLinks: [{ icon: 'github', link: 'https://github.com/EthanBAI-dev/langchain-zh' }],
     outline: { level: [2, 3], label: '本页目录' },
     docFooter: { prev: '上一章', next: '下一章' },
     lastUpdated: { text: '最后更新' },

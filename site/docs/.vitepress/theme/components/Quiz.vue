@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Icon from './Icon.vue'
 import { computed, ref } from 'vue'
 import type { Question } from '../data/quizzes'
 import { progress, recordQuiz } from '../progress'
@@ -37,7 +38,7 @@ const letters = 'ABCDEFG'
 <template>
   <section class="quiz">
     <header class="quiz-head">
-      <h2 class="quiz-title">✍️ 本章小测验</h2>
+      <h2 class="quiz-title"><span class="tile"><Icon name="pencil-line" :size="17" /></span>本章小测验</h2>
       <span v-if="record" class="quiz-best">最好成绩 {{ record.best }} / {{ record.total }}</span>
     </header>
     <p class="quiz-tip">共 {{ questions.length }} 题，全部作答后提交，会显示每题的解析。</p>
@@ -75,7 +76,7 @@ const letters = 'ABCDEFG'
       <template v-else>
         <span class="quiz-score" :class="{ full: score === questions.length }">
           得分 {{ score }} / {{ questions.length }}
-          <template v-if="score === questions.length">🎉 全对！</template>
+          <template v-if="score === questions.length"><Icon name="trophy" :size="16" /> 全对！</template>
           <template v-else-if="score >= questions.length / 2">不错，看看错题的解析吧。</template>
           <template v-else>建议回到正文再读一遍重点小节。</template>
         </span>

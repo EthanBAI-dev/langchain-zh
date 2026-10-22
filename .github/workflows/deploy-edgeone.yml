@@ -1,0 +1,73 @@
+name: 部署到腾讯 EdgeOne
+
+# 需要在仓库 Settings → Secrets and variables → Actions 里配置：
+#   Secret   EDGEONE_API_TOKEN   EdgeOne 控制台 → API Token 里创建
+#   Variable EDGEONE_AREA        可选。overseas = 海外节点，不需要备案（默认）
+#                                global   = 含中国大陆节点，绑定的自定义域名必须已备案
+#   Variable EDGEONE_PROJECT     可选。项目名，默认 langchain-zh
+# 没配 Token 时这个工作流直接跳过，不会报错。
+
+on:
+  push:
+    branches: [main]
+    paths: ['content/**', 'site/**', '.github/workflows/deploy-edgeone.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: edgeone
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      EDGEONE_API_TOKEN: ${{ secrets.EDGEONE_API_TOKEN }}
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - name: 检查 Token
+        id: check
+        working-directory: .
+        run: |
+          if [ -z "$EDGEONE_API_TOKEN" ]; then
+            echo "::notice::没有配置 EDGEONE_API_TOKEN，跳过部署"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.skip != 'true'
+        with:
+          fetch-depth: 0   # 页面“最后更新”时间需要 git 历史
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.skip != 'true'
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - if: steps.check.outputs.skip != 'true'
+        run: npm ci
+      - name: 构建
+        if: steps.check.outputs.skip != 'true'
+        run: npm run build
+        env:
+          BASE: /
+      - name: 补上目录式地址
+        if: steps.check.outputs.skip != 'true'
+        # 站点用的是 cleanUrls（/roadmap 而不是 /roadmap.html），给每个 x.html 补一份 x/index.html，
+        # 不依赖平台是否会自动补 .html
+        working-directory: site/docs/.vitepress/dist
+        run: |
+          find . -name '*.html' ! -name 'index.html' ! -name '404.html' | while read -r f; do
+            d="${f%.html}"
+            mkdir -p "$d" && [ -e "$d/index.html" ] || cp "$f" "$d/index.html"
+          done
+      - name: 部署
+        if: steps.check.outputs.skip != 'true'
+        run: >
+          npx --yes edgeone@1.6.44 makers deploy docs/.vitepress/dist
+          -n "${{ vars.EDGEONE_PROJECT || 'langchain-zh' }}"
+          -a "${{ vars.EDGEONE_AREA || 'overseas' }}"
+          -t "$EDGEONE_API_TOKEN"

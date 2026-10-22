@@ -1,6 +1,6 @@
 /* =====================================================================
-   设计语言：白底 + 浅色卡片 + 深墨色主按钮；主色靛蓝，辅色天蓝，只用这两种颜色；
-   成功用绿色、出错用红色这类语义色不算。--blue 这个名字沿用旧组件，值是主色靛蓝
+   设计语言：白底 + 浅色卡片 + 深墨色主按钮；只有一个低饱和的墨蓝强调色，渐变只用在大标题这类少数地方（同色系深浅），图标块平涂浅底；
+   成功用绿色、出错用红色这类语义色不算。--blue 这个名字沿用旧组件，值是墨蓝
    图标全部是内联 SVG（Lucide 线性图标），不用 emoji
    ===================================================================== */
 :root {
@@ -16,9 +16,9 @@
   --action: #161A23;
   --action-hover: #0F0B16;
   --action-text: #FFFFFF;
-  --blue: #4F46E5;
-  --blue-tint: #EEF0FF;
-  --blue-ink: #3730A3;
+  --blue: #2F5D8A;
+  --blue-tint: #EEF3F8;
+  --blue-ink: #234A70;
   --ok: #059669;
   --ok-tint: #ECFDF5;
   --warn: #B45309;
@@ -32,10 +32,7 @@
   --shadow: 0 1px 3px rgba(17, 20, 26, .04);
   --shadow-lg: 0 24px 60px -24px rgba(17, 20, 26, .22), 0 2px 6px rgba(17, 20, 26, .04);
   --radius: 12px;
-  --g1: #4F46E5;
-  --g2: #3B82F6;
-  --g3: #0EA5E9;
-  --grad: linear-gradient(90deg, var(--g1), var(--g2) 50%, var(--g3));
+  --grad: linear-gradient(90deg, #22476B, #3F7FAE);
 
   /* 兼容旧组件里用到的名字 */
   --ok-soft: var(--ok-tint);
@@ -57,14 +54,14 @@
   --vp-c-border: var(--line-strong);
   --vp-c-default-soft: var(--fill);
   --vp-c-brand-1: var(--blue);
-  --vp-c-brand-2: #4338CA;
+  --vp-c-brand-2: #264D73;
   --vp-c-brand-3: var(--action);
   --vp-c-brand-soft: var(--blue-tint);
   --vp-c-tip-1: var(--blue);
   --vp-c-tip-soft: var(--blue-tint);
   --vp-code-block-bg: var(--card);
   --vp-code-bg: var(--fill);
-  --vp-code-color: #4338CA;
+  --vp-code-color: #234A70;
   --vp-code-line-highlight-color: var(--blue-tint);
   --vp-nav-bg-color: rgba(255, 255, 255, .78);
   --vp-sidebar-bg-color: var(--bg);
@@ -89,9 +86,9 @@
   --action: #ECEEF2;
   --action-hover: #FFFFFF;
   --action-text: #11141A;
-  --blue: #A5B4FC;
-  --blue-tint: rgba(165, 180, 252, .13);
-  --blue-ink: #C7D2FE;
+  --blue: #8FB0D3;
+  --blue-tint: rgba(143, 176, 211, .12);
+  --blue-ink: #BBD0E6;
   --ok: #34D399;
   --ok-tint: rgba(52, 211, 153, .12);
   --warn: #FBBF24;
@@ -105,11 +102,9 @@
   --human: #F472B6;
   --shadow: 0 1px 3px rgba(0, 0, 0, .3);
   --shadow-lg: 0 24px 60px -24px rgba(0, 0, 0, .7), 0 2px 6px rgba(0, 0, 0, .3);
-  --vp-c-brand-2: #C7D2FE;
-  --g1: #818CF8;
-  --g2: #60A5FA;
-  --g3: #38BDF8;
-  --vp-code-color: #A5B4FC;
+  --vp-c-brand-2: #BBD0E6;
+  --grad: linear-gradient(90deg, #8FB0D3, #C3DAEE);
+  --vp-code-color: #BBD0E6;
   --vp-nav-bg-color: rgba(17, 19, 24, .78);
 }
 
@@ -452,12 +447,6 @@ body { -webkit-font-smoothing: antialiased; }
 
 /* ---------- 正文的一点颜色 ---------- */
 .VPSidebar .group { --dot: #64748B; }
-.VPSidebar .group:nth-child(4) { --dot: #4F46E5; }
-.VPSidebar .group:nth-child(5) { --dot: #0EA5E9; }
-.VPSidebar .group:nth-child(6) { --dot: #4F46E5; }
-.VPSidebar .group:nth-child(7) { --dot: #0EA5E9; }
-.VPSidebar .group:nth-child(8) { --dot: #4F46E5; }
-.VPSidebar .group:nth-child(9) { --dot: #0EA5E9; }
 .VPSidebarItem.level-0.collapsible > .item .text::before {
   content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 3px; margin-right: 8px; background: var(--dot); vertical-align: 1px;
 }

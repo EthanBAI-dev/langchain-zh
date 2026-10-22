@@ -2,11 +2,11 @@
 // 坐标是网格（col 列、lane 泳道），渲染时换算成像素；章节号、标题都从 chapters.json 读。
 export const STAGE_COLORS: Record<string, string> = {
   '开始之前': '#64748B',
-  'LangChain 入门': '#2F5D8A',
-  'LangGraph 进阶': '#7A8CA3',
-  '高级专题': '#64748B',
-  'Deep Agents 实战': '#2F5D8A',
-  'LangSmith 实战': '#7A8CA3',
+  'LangChain 入门': '#B5643C',
+  'LangGraph 进阶': '#2F5D8A',
+  '高级专题': '#7A8CA3',
+  'Deep Agents 实战': '#6E5A92',
+  'LangSmith 实战': '#3E7C62',
   '附录': '#94A3B8',
 }
 
@@ -39,16 +39,16 @@ export const NODES: RoadNode[] = [
 
 // 首页的四个学习方向，一条泳道一张卡片。章节从 NODES 里按泳道取，不在这里写死
 export const DIRECTIONS = [
-  { lane: 0, name: 'LangChain 入门', icon: 'bot', from: '#2F5D8A', to: '#7A8CA3',
+  { lane: 0, name: 'LangChain 入门', icon: 'bot', from: '#B5643C', to: '#B5643C',
     desc: '用 create_agent 十几行代码造出会调工具的 Agent，再学记忆、中间件、多模态和多智能体。',
     tags: ['create_agent', '工具调用', '中间件', '多模态'] },
-  { lane: 1, name: 'LangGraph 进阶', icon: 'workflow', from: '#2F5D8A', to: '#7A8CA3',
+  { lane: 1, name: 'LangGraph 进阶', icon: 'workflow', from: '#2F5D8A', to: '#2F5D8A',
     desc: '把 Agent 拆成状态、节点和边，亲手加上记忆、人工审批、并行子图，最后部署上线。',
     tags: ['状态图', 'Reducer', '人在回路', '部署'] },
-  { lane: 2, name: 'Deep Agents', icon: 'rocket', from: '#2F5D8A', to: '#7A8CA3',
+  { lane: 2, name: 'Deep Agents', icon: 'rocket', from: '#6E5A92', to: '#6E5A92',
     desc: '像 Claude Code 那样能连跑几十步的 Agent：任务规划、虚拟文件系统、子智能体委派。',
     tags: ['规划', '文件系统', '子智能体', 'Skills'] },
-  { lane: 3, name: 'LangSmith', icon: 'telescope', from: '#2F5D8A', to: '#7A8CA3',
+  { lane: 3, name: 'LangSmith', icon: 'telescope', from: '#3E7C62', to: '#3E7C62',
     desc: '看清 Agent 每一步在干什么：追踪、离线评估、提示工程和线上监控。',
     tags: ['Tracing', '评估', '提示工程', '监控'] },
 ]

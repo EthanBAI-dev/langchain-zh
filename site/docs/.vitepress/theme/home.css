@@ -71,7 +71,7 @@
 }
 .dir-ic {
   width: 48px; height: 48px; border-radius: 13px; display: grid; place-items: center; color: #fff;
-  background: var(--blue-tint); color: var(--blue); border: 1px solid color-mix(in srgb, var(--blue) 18%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--a) 20%, var(--card)), color-mix(in srgb, var(--a) 7%, var(--card))); color: var(--a); border: 1px solid color-mix(in srgb, var(--a) 22%, transparent);
 }
 .dir h3, .lab h3 { margin: 18px 0 8px; font-size: 18px; font-weight: 700; color: var(--ink); }
 .dir p, .lab p { margin: 0; font-size: 14px; line-height: 1.7; color: var(--muted); flex: 1; }
@@ -96,12 +96,12 @@
 }
 .sx-ic {
   flex: none; width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; color: #fff;
-  background: var(--blue-tint); color: var(--blue); border: 1px solid color-mix(in srgb, var(--blue) 18%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--a) 20%, var(--card)), color-mix(in srgb, var(--a) 7%, var(--card))); color: var(--a); border: 1px solid color-mix(in srgb, var(--a) 22%, transparent);
 }
 .sx-ic.big { width: 56px; height: 56px; border-radius: 16px; margin: 0 auto 20px; }
 .pts { list-style: none; padding: 0; margin: 24px 0 30px; display: grid; gap: 12px; }
 .pts li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--ink); }
-.pts .icon { color: var(--blue); }
+.pts .icon { color: var(--pt, var(--blue)); }
 .sx-demo { position: relative; min-width: 0; }
 .sx-demo .hero-stage { margin: 0; }
 
@@ -268,3 +268,25 @@ li.on .cb svg { stroke-dashoffset: 0; }
 @media (prefers-reduced-motion: reduce) { .stage-svg animate, .stage-svg animateMotion { display: none; } }
 
 .term .lights i { background: #3A3F4B; }
+
+/* 低饱和多色：每个方向、每个区块一种颜色（赭石、墨蓝、黛紫、松绿、琥珀），只用在图标块和标签上 */
+.dark .dir-ic, .dark .sx-ic { color: color-mix(in srgb, var(--a) 55%, #fff); background: linear-gradient(135deg, color-mix(in srgb, var(--a) 30%, var(--card)), color-mix(in srgb, var(--a) 12%, var(--card))); }
+.dark .tags span { color: color-mix(in srgb, var(--a) 55%, #fff); background: color-mix(in srgb, var(--a) 20%, transparent); }
+.dark .dir-go b, .dark .lab-go { color: color-mix(in srgb, var(--a) 55%, #fff); }
+.dark .pts .icon { color: color-mix(in srgb, var(--pt, var(--blue)) 55%, #fff); }
+/* 首屏两片很淡的暖色和冷色底光，16 秒一次缓慢呼吸 */
+.hx-wash { position: absolute; inset: -64px 0 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.hx-wash i { position: absolute; border-radius: 50%; filter: blur(80px); animation: wash 16s ease-in-out infinite; }
+.hx-wash i:nth-child(1) { width: 520px; height: 420px; left: 4%; top: 20px; background: color-mix(in srgb, #B5643C 16%, transparent); }
+.hx-wash i:nth-child(2) { width: 560px; height: 460px; right: 2%; top: -20px; background: color-mix(in srgb, #2F5D8A 16%, transparent); animation-delay: -8s; }
+.dark .hx-wash i:nth-child(1) { background: color-mix(in srgb, #B5643C 14%, transparent); }
+.dark .hx-wash i:nth-child(2) { background: color-mix(in srgb, #2F5D8A 22%, transparent); }
+@keyframes wash { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .hx-wash i { animation: none; } }
+/* 图标块：低饱和颜色的实心块 + 白色图标，同一种颜色深浅过渡 */
+.dir-ic, .sx-ic, .dark .dir-ic, .dark .sx-ic {
+  color: #fff; border: 0;
+  background: linear-gradient(140deg, color-mix(in srgb, var(--a) 82%, #fff), var(--a) 55%, color-mix(in srgb, var(--a) 80%, #000));
+  box-shadow: 0 6px 14px -8px color-mix(in srgb, var(--a) 70%, transparent);
+}
+.dir { border-top: 3px solid color-mix(in srgb, var(--a) 70%, transparent); }

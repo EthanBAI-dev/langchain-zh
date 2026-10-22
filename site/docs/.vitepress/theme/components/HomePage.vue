@@ -59,9 +59,9 @@ watch([loopIn, reduced], ([v, r]) => {
 })
 
 const labs = [
-  { link: '/lab/react', icon: 'refresh-cw', title: 'ReAct 循环模拟器', desc: '一步一步看 Agent 在模型和工具之间来回，消息列表怎么变长。', from: '#2F5D8A', to: '#2F5D8A' },
+  { link: '/lab/react', icon: 'refresh-cw', title: 'ReAct 循环模拟器', desc: '一步一步看 Agent 在模型和工具之间来回，消息列表怎么变长。', from: '#B5643C', to: '#B5643C' },
   { link: '/lab/reducer', icon: 'git-fork', title: 'Reducer 实验台', desc: '亲手试 operator.add 和 add_messages：新值是覆盖、追加还是替换。', from: '#2F5D8A', to: '#2F5D8A' },
-  { link: '/lab/flashcards', icon: 'layers', title: '术语记忆卡片', desc: `${glossary.length} 个核心术语，正面中英文，翻面看解释，记住的自动移走。`, from: '#2F5D8A', to: '#2F5D8A' },
+  { link: '/lab/flashcards', icon: 'layers', title: '术语记忆卡片', desc: `${glossary.length} 个核心术语，正面中英文，翻面看解释，记住的自动移走。`, from: '#3E7C62', to: '#3E7C62' },
 ]
 </script>
 
@@ -69,7 +69,7 @@ const labs = [
   <div class="home">
     <!-- 主视觉：两团会呼吸的光斑 + 点阵 -->
     <section class="hx">
-      <div class="hx-bg" aria-hidden="true" />
+      <div class="hx-bg" aria-hidden="true" /><div class="hx-wash" aria-hidden="true"><i /><i /></div>
       <div class="wrap hx-in">
         <a class="hx-chip" :href="withBase('/roadmap')"><img :src="withBase('/logo.svg')" alt="" width="20" height="20" />LangChain Academy 中文版 · 免费开源<Icon name="chevron-right" :size="14" /></a>
         <h1 class="hx-title">
@@ -97,7 +97,7 @@ const labs = [
     </section>
 
     <!-- 路线图 -->
-    <section class="sx wrap">
+    <section class="sx wrap" style="--pt:#2F5D8A">
       <div class="sx-text">
         <h2><span class="sx-ic" style="--a:#2F5D8A;--b:#2F5D8A"><Icon name="map" :size="20" /></span>学习路线图</h2>
         <p class="sub">二十章的先后关系画成一张图。点开任意一章，右边列出这一章讲什么、先学哪几章，学完打个勾。</p>
@@ -112,9 +112,9 @@ const labs = [
     </section>
 
     <!-- ReAct 循环 -->
-    <section class="sx wrap flip">
+    <section class="sx wrap flip" style="--pt:#6E5A92">
       <div class="sx-text">
-        <h2><span class="sx-ic" style="--a:#2F5D8A;--b:#2F5D8A"><Icon name="refresh-cw" :size="20" /></span>看懂 Agent 的循环</h2>
+        <h2><span class="sx-ic" style="--a:#6E5A92;--b:#6E5A92"><Icon name="refresh-cw" :size="20" /></span>看懂 Agent 的循环</h2>
         <p class="sub">Agent 的全部秘密，就是模型和工具之间的一个循环。教程里每个关键机制都画成了这样的动图。</p>
         <ul class="pts">
           <li><Icon name="brain" :size="16" />模型决定要不要调工具、调哪个</li>
@@ -127,9 +127,9 @@ const labs = [
     </section>
 
     <!-- Agent 终端 -->
-    <section class="sx wrap">
+    <section class="sx wrap" style="--pt:#B5643C">
       <div class="sx-text">
-        <h2><span class="sx-ic" style="--a:#2F5D8A;--b:#2F5D8A"><Icon name="terminal" :size="20" /></span>十几行代码，一个会查数据库的 Agent</h2>
+        <h2><span class="sx-ic" style="--a:#B5643C;--b:#B5643C"><Icon name="terminal" :size="20" /></span>十几行代码，一个会查数据库的 Agent</h2>
         <p class="sub">第一个实战就造一个 SQL 助手：你用中文提问，它自己看表结构、写查询、读结果，再回答你。</p>
         <ul class="pts">
           <li><Icon name="bot" :size="16" />create_agent：模型 + 工具 + 提示词</li>
@@ -142,9 +142,9 @@ const labs = [
     </section>
 
     <!-- 练手程序 -->
-    <section class="sx wrap flip">
+    <section class="sx wrap flip" style="--pt:#3E7C62">
       <div class="sx-text">
-        <h2><span class="sx-ic" style="--a:#2F5D8A;--b:#2F5D8A"><Icon name="notebook-pen" :size="20" /></span>配套练手题，离线自动判分</h2>
+        <h2><span class="sx-ic" style="--a:#3E7C62;--b:#3E7C62"><Icon name="notebook-pen" :size="20" /></span>配套练手题，离线自动判分</h2>
         <p class="sub">每章读完补几行 TODO，一条命令就知道哪里对、哪里错。用假模型检查，不需要 API Key。</p>
         <ul class="pts">
           <li><Icon name="file-code" :size="16" />起始代码、自动检查、参考答案三件套</li>
@@ -158,7 +158,7 @@ const labs = [
 
     <!-- 互动实验室 -->
     <section class="lx wrap">
-      <h2><span class="sx-ic" style="--a:#2F5D8A;--b:#2F5D8A"><Icon name="flask-conical" :size="20" /></span>互动实验室</h2>
+      <h2><span class="sx-ic" style="--a:#A07A2C;--b:#A07A2C"><Icon name="flask-conical" :size="20" /></span>互动实验室</h2>
       <p class="sub">最难懂的几个机制，做成了可以一步一步点的小实验。</p>
       <div class="labs">
         <a v-for="l in labs" :key="l.link" class="lab" :href="withBase(l.link)" :style="{ '--a': l.from, '--b': l.to }">

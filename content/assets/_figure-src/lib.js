@@ -26,6 +26,7 @@ const EMOJI = {
   '✅': 'circle-check', '🔄': 'refresh-cw', '📄': 'file-text', '👥': 'users', '📝': 'notebook-pen',
   '⏸': 'circle-pause', '🗂': 'folder-tree', '⛔': 'octagon-x', '🔎': 'search', '🧰': 'toolbox',
   '🎨': 'palette', '🚀': 'rocket', '🔭': 'telescope', '⏰': 'alarm-clock', '🗄': 'database',
+  '💻': 'code-xml', '🔒': 'lock-keyhole', '📦': 'package', '🐍': 'square-terminal',
 };
 const EMOJI_COLOR = {
   bot: '#2563EB', user: '#DB2777', wrench: '#D97706', 'circle-check': '#059669', 'octagon-x': '#DC2626',

@@ -191,6 +191,7 @@ body { -webkit-font-smoothing: antialiased; }
 .vp-doc th { background: var(--subtle); font-weight: 600; color: var(--ink); }
 .vp-doc th, .vp-doc td { border: 0; border-bottom: 1px solid var(--line); padding: 10px 14px; }
 .vp-doc tr:last-child td { border-bottom: 0; }
+.vp-doc th:first-child, .vp-doc td:first-child { word-break: keep-all; }
 .vp-doc tr:nth-child(2n) { background: transparent; }
 @media (max-width: 760px) { .vp-doc table { display: block; overflow-x: auto; } }
 

@@ -74,8 +74,9 @@ for (const [file, slug] of slugOf) {
   fs.writeFileSync(path.join(out, `${slug}.md`), fm + md)
 }
 
-// 图片：只复制成品图，不复制作图源码
-for (const dir of ['figures', 'course']) {
+// 图片：只复制成品图，不复制作图源码；uploads 是在编辑后台上传的图片
+for (const dir of ['figures', 'course', 'uploads']) {
+  if (!fs.existsSync(path.join(src, 'assets', dir))) continue
   fs.cpSync(path.join(src, 'assets', dir), path.join(out, 'assets', dir), { recursive: true })
 }
 
@@ -94,5 +95,44 @@ for (const line of appendix.split('\n')) {
 }
 fs.writeFileSync(path.join(root, 'docs/.vitepress/theme/data/outline.json'), JSON.stringify(outline, null, 2))
 fs.writeFileSync(path.join(root, 'docs/.vitepress/theme/data/glossary.json'), JSON.stringify(glossary, null, 2))
+
+// 编辑后台（/admin）：按章节表生成 Sveltia CMS 的配置，每章一个条目
+const admin = path.join(root, 'docs/public/admin')
+const body = { name: 'body', label: '正文', widget: 'markdown', modes: ['raw', 'rich_text'] }
+const cmsConfig = {
+  backend: {
+    name: 'github',
+    repo: 'EthanBAI-dev/langchain-zh',
+    branch: 'main',
+    auth_methods: ['token'],
+    commit_messages: {
+      update: '后台编辑：更新 {{path}}',
+      uploadMedia: '后台编辑：上传图片 {{path}}',
+      deleteMedia: '后台编辑：删除图片 {{path}}',
+    },
+  },
+  app_title: 'LangChain 中文学堂 · 编辑后台',
+  logo: { src: '../logo.svg' },
+  media_folder: 'content/assets/uploads',
+  public_folder: 'assets/uploads',
+  collections: [{
+    name: 'chapters',
+    label: '教程章节',
+    label_singular: '章节',
+    icon: 'menu_book',
+    description: '保存后会直接提交到 GitHub，网站大约 2 分钟后自动更新。',
+    files: [
+      { name: 'index', label: '总导读', file: 'content/README.md', fields: [body] },
+      ...chapters.map((c) => ({
+        name: c.slug,
+        label: c.slug === 'appendix' ? c.title : `第 ${c.num} 章 · ${c.title}`,
+        file: `content/${c.file}`,
+        fields: [body],
+      })),
+    ],
+  }],
+}
+// JSON 本身就是合法的 YAML
+fs.writeFileSync(path.join(admin, 'config.yml'), JSON.stringify(cmsConfig, null, 2) + '\n')
 
 console.log(`✓ 已生成 ${slugOf.size} 个页面，术语 ${glossary.length} 条`)

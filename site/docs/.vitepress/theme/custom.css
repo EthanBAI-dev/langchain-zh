@@ -254,6 +254,9 @@ body { -webkit-font-smoothing: antialiased; }
 .pill.ok .icon { color: var(--ok); }
 .pill.part b { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
 .pill.dim { opacity: .6; }
+.pill.edit { margin-left: auto; color: var(--blue); text-decoration: none; }
+.pill.edit .icon { color: var(--blue); }
+.pill.edit:hover { border-color: var(--blue); }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 7px;
   font-size: 14px; font-weight: 600; line-height: 1; height: 38px; padding: 0 16px; border-radius: 10px;

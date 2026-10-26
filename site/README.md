@@ -9,6 +9,21 @@
 - **学习进度**：章末“标记本章已完成”，首页和 `/progress` 汇总进度、测验成绩、剩余时长。
 - **互动实验室**：ReAct 循环模拟器、Reducer / `add_messages` 实验台、术语记忆卡片（术语从附录表格自动抽取）。
 - **中文全文搜索**：本地搜索 + `Intl.Segmenter` 中文分词。
+- **网页编辑后台**：`/admin`（[Sveltia CMS](https://sveltiacms.app/)），用 GitHub 令牌登录，在浏览器里改 `content/` 的章节，保存即提交到 `main`，网站自动重新部署。
+
+## 编辑后台怎么用
+
+1. **第一次：生成令牌**。打开 GitHub 的 [Fine-grained token 页面](https://github.com/settings/personal-access-tokens/new)，
+   Repository access 选 “Only select repositories” → `langchain-zh`，
+   Permissions 里把 **Contents** 设成 **Read and write**，生成后复制令牌（只显示一次）。
+2. 打开学习站地址后面加 `/admin/`（例如 `https://ethanbai-dev.github.io/langchain-zh/admin/`），
+   点“使用访问令牌登录”，粘贴令牌。同一台浏览器之后会记住登录。
+3. 左边选章节，左栏改 Markdown、右栏实时预览，点右上角“保存”。保存就是一次 Git 提交，约 2 分钟后网站更新。
+4. 打开过后台的浏览器，章节页右上角会多一个“编辑本页”按钮，直接跳到这一章的编辑界面。
+
+- 编辑器默认是 Markdown 原文模式，最不容易把格式弄乱；工具栏里可以切到可视化模式。
+- 上传的图片放在 `content/assets/uploads/`。
+- 后台的章节列表由 `scripts/prepare.mjs` 根据 `chapters.json` 生成到 `docs/public/admin/config.yml`，新增章节不用另外改后台。
 
 ## 本地运行
 
@@ -25,8 +40,9 @@ npm run build      # 产物在 docs/.vitepress/dist
 
 ```
 site/
-├─ scripts/prepare.mjs          content/ → docs/learn/（生成，不入库）
+├─ scripts/prepare.mjs          content/ → docs/learn/，并生成后台配置（都不入库）
 └─ docs/
+   ├─ public/admin/index.html   编辑后台入口
    ├─ index.md                  首页
    ├─ progress.md               我的进度
    ├─ lab/                      互动实验室三个页面

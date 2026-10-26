@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>编辑后台 · LangChain 中文学堂</title>
+  <link rel="icon" href="../logo.svg" />
+</head>
+<body>
+  <!-- 编辑器是 Sveltia CMS：用 GitHub 令牌登录，改完直接提交到仓库的 content/，网站随后自动重新部署。
+       config.yml 由 scripts/prepare.mjs 按章节表生成。 -->
+  <script>
+    // 打开过后台的浏览器，在章节页上显示“编辑本页”按钮（普通读者看不到）
+    try { localStorage.setItem('lczh-editor', '1') } catch {}
+    // 预览里正文图片写的是相对路径 assets/...，在后台页面下找不到；改从 GitHub 仓库直接取图
+    const raw = 'https://raw.githubusercontent.com/EthanBAI-dev/langchain-zh/main/content/'
+    const fixImg = (img) => {
+      const src = img.getAttribute('src')
+      if (src && src.startsWith('assets/')) img.setAttribute('src', raw + src)
+    }
+    new MutationObserver((list) => {
+      for (const m of list) {
+        if (m.type === 'attributes') fixImg(m.target)
+        else for (const n of m.addedNodes) {
+          if (n.nodeName === 'IMG') fixImg(n)
+          else if (n.querySelectorAll) n.querySelectorAll('img').forEach(fixImg)
+        }
+      }
+    }).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] })
+  </script>
+  <script src="https://unpkg.com/@sveltia/cms@0.234.0/dist/sveltia-cms.js"></script>
+</body>
+</html>
